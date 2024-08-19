@@ -15,8 +15,7 @@ my email: yuhl@stu.ouc.edu.cn / 13427917163@163.com
 
 my wechat: yhl2765428788
 
-![](images/个人微信.png)
-
+<img src="images/个人微信.png" style="zoom:30%;" />
 
 
 For more info
