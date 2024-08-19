@@ -7,7 +7,7 @@ redirect_from:
   - /about.html
 ---
 
-Now I'm turning to be a senior student from Oceng University of China. My major is Electronic Engineering. My research interest includes AGI, reinforcement learning, and so on.
+Now I'm turning to be a senior student from Ocean University of China. My major is Electronic Engineering. My research interest includes AGI, reinforcement learning, and so on.
 
 
 
