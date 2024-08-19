@@ -11,11 +11,13 @@ Now I'm turning to be a senior student in Ocean University of China. My major is
 
 **contact me**
 
+my email: yuhl@stu.ouc.edu.cn / 13427917163@163.com
+
 my wechat: yhl2765428788
 
 ![](images/个人微信.png)
 
-my email: yuhl@stu.ouc.edu.cn / 13427917163@163.com
+
 
 For more info
 ------
