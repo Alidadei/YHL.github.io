@@ -11,6 +11,14 @@ redirect_from:
 
 教育经历
 ======
+---
+layout: archive
+title: "CV"
+permalink: /cv/
+author_profile: true
+redirect_from:
+  - /resume
+---
 | 学习起止时间           | 学习或工作单位名称               | 担任职务 |
 |-----------------------|---------------------------------|----------|
 | 2015-2018             | 深圳市外国语学校初中部          | 宣传委员  |      
