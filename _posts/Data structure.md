@@ -1,6 +1,6 @@
 ---
 title: 'Data structure'
-permalink: /posts/2012/08/blog-post-4/
+permalink: /posts/Data structure/
 tags:
   - Data structure
 ---
