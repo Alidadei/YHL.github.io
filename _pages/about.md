@@ -32,7 +32,7 @@ I have also participated in numerous competitions, which have comprehensively im
 Besides, I‘ve taken part in many social practice activities. These activities have significantly strengthened my time management and organizational  capabilities.
 
 
-**contact me**
+**contact me!**
 
 my email: yuhl@stu.ouc.edu.cn / 13427917163@163.com
 
