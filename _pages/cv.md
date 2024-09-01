@@ -9,13 +9,14 @@ redirect_from:
 
 {% include base_path %}
 
-教育经历
+Educational Experience
 ======
-* 2015-2018        深圳市外国语学校初中部   担任宣传委员     
-* 2018-2021        深圳市外国语学校高中部   担任宣传委员 
-* 2021-今          中国海洋大学             校书法协会干事、自强社志愿者 
 
-科研项目
+* 2015-2018    Shenzhen Foreign Language School Junior High School as Publicity Member
+* 2018-2021    Senior High School of Shenzhen Foreign Language School as Publicity Committee Member
+* 2021-present    Ocean University of China      School Calligraphy Association Officer, Self-improvement Club Volunteer
+
+Research Projects
 ======
 2022.11-2023.11     校级大创：基于 stm32 的智能桌面系统    负责人
 
