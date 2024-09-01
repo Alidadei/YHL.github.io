@@ -1,5 +1,6 @@
 ---
 title: '微机原理学习笔记'
+date:
 permalink: /posts/2013/08/blog-post-2/
 tags:
   - microcomputer
