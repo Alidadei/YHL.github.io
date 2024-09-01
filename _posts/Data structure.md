@@ -9,11 +9,4 @@ tags:
 
 **数据结构实验：**https://blog.csdn.net/weixin_62290551/category_12258222.html
 
-Headings are cool
-======
 
-You can have many headings
-======
-
-Aren't headings cool?
-------
