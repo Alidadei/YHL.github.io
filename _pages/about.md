@@ -11,9 +11,9 @@ Now I'm turning to be a senior student in Ocean University of China. My major is
 
 **Academic Background:**
 
-<u>Average score</u>: 89.97
+<u>Overall grade</u>: 93.97
 
-<u>Ranking </u>: top 8%
+<u>Ranking </u>: top 3.6% (4/113)
 
 <u>Honors</u>: the Second-Class Scholarship, title of Outstanding Student
 
