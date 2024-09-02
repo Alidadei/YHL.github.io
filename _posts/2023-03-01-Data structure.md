@@ -1,5 +1,5 @@
 ---
-title: 'Data structure'
+title: 'Data structure Study Note'
 permalink: /posts/Data structure/
 date: 2023-03-01
 tags:
