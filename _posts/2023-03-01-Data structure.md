@@ -6,7 +6,7 @@ tags:
   - Data structure
 ---
 
-数据结构学习笔记详见：
+数据结构学习笔记专栏（知识点+实验）：
 
 [**数据结构知识点：**](https://blog.csdn.net/weixin_62290551/category_12256028.html)
 
