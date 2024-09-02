@@ -38,17 +38,17 @@ At the beginning of my junior year, driven by a research interest in Reinforceme
   
 ## Skills
 ==========================
-### **编程技能**：C、C++、Matlab、Python，了解基本的数据结构，代码可读性高，注释清晰易懂；
+ **编程技能**：C、C++、Matlab、Python，了解基本的数据结构，代码可读性高，注释清晰易懂；
 
-### **科研技能**：Latex 论文写作、前沿文献调研、Gazebo、Simulink 仿真、实验数据整理等；
+ **科研技能**：Latex 论文写作、前沿文献调研、Gazebo、Simulink 仿真、实验数据整理等；
 
-### **通用技能**：优秀的团队协作能力和表达能力、普通话二级甲等、熟练运用 office 等办公软件；
+ **通用技能**：优秀的团队协作能力和表达能力、普通话二级甲等、熟练运用 office 等办公软件；
 
-### **Programming skills**: C, C++, Matlab, Python, understanding of basic data structures, code readability, clear and understandable comments;
+ **Programming skills**: C, C++, Matlab, Python, understanding of basic data structures, code readability, clear and understandable comments;
 
-### **Research skills**: Latex paper writing, cutting-edge literature research, Gazebo, Simulink simulation, experimental data organisation, etc;
+ **Research skills**: Latex paper writing, cutting-edge literature research, Gazebo, Simulink simulation, experimental data organisation, etc;
 
-### **General Skills**: excellent teamwork and presentation skills, Putonghua Grade 2A, proficiency in office software;
+ **General Skills**: excellent teamwork and presentation skills, Putonghua Grade 2A, proficiency in office software;
 
 ==========================**未来待补充**======================
 
