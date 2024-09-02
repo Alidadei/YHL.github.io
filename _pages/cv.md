@@ -37,7 +37,8 @@ During my sophomore year, I **led** a school-level innovation project titled "In
 At the beginning of my junior year, driven by a research interest in Reinforcement Learning and Large Language Models, I contacted Professor Li on my own initiative and joined his **"Intelligent Autonomous Systems"** research group. Under the guidance of him, I engaged in a literature research on **"Robot Learning Methods Combining Large Language Models and Reinforcement Learning"**, and summarized the relevant studies, which have led to the preliminary formation of a review article. Concurrently, I participated in the research project **"Autonomous Behavioral Learning Methods for Social Robot Haru Based on Large Language Models"**, independently learning and setting up the ROS experimental environment on the Ubuntu system, and conducting simulation experiments on the Gazebo platform. This experience has thoroughly honed my ability to research cutting-edge literature and largely trained my practical skills, laying a solid foundation for my future scientific research work.
   
 ## Skills
-==========================
+======================================
+
  **编程技能**：C、C++、Matlab、Python，了解基本的数据结构，代码可读性高，注释清晰易懂；
 
  **科研技能**：Latex 论文写作、前沿文献调研、Gazebo、Simulink 仿真、实验数据整理等；
