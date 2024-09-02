@@ -1,5 +1,5 @@
 ---
-title: '微机原理学习笔记'
+title: 'Microcomputer Study Note'
 permalink: /posts/2023/04/microcomputer/
 tags:
   - microcomputer
