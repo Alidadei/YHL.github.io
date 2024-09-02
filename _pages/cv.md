@@ -15,7 +15,7 @@ Educational Experience
 * 2015-2018    Junior High School of Shenzhen Foreign Language School **as** Publicity Member
 * 2018-2021    Senior High School of Shenzhen Foreign Language School **as** Publicity Committee Member
 * 2021-present    Ocean University of China
-  |School Calligraphy Association Officer, Self-improvement Club Volunteer
+   || School Calligraphy Association Officer, Self-improvement Club Volunteer
 
 Research Projects
 ======
