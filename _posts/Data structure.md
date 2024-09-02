@@ -1,6 +1,7 @@
 ---
 title: 'Data structure'
 permalink: /posts/Data structure/
+date:'2023.05'
 tags:
   - Data structure
 ---
