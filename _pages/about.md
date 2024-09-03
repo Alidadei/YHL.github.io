@@ -41,6 +41,8 @@ my wechat: yhl2765428788
 <img src="images/个人微信.png" style="zoom:30%;" />
 
 
-For more info
-------
-More info about configuring Academic Pages can be found in [the guide](https://academicpages.github.io/markdown/). The [guides for the Minimal Mistakes theme](https://mmistakes.github.io/minimal-mistakes/docs/configuration/) (which this theme was forked from) might also be helpful.
+**News:**
+
+<div style="height: 5px; background-color: #808080;"></div>
+
+
