@@ -31,6 +31,13 @@ I have also participated in numerous competitions, which have comprehensively im
 
 Besides, I‘ve taken part in many social practice activities. These activities have significantly strengthened my time management and organizational  capabilities.
 
+**News:** 
+
+<div style="height: 10px; background-color: #bfc1c2; width: 100%;"></div>
+
+<span style="color: #9D0000;">news!</span>  08/2024. I won an extra point bonus recognition of my department through oral defense. 
+
+<div style="height: 10px; background-color: #bfc1c2; width: 100%;"></div>
 
 **contact me!**
 
@@ -41,10 +48,6 @@ my wechat: yhl2765428788
 <img src="images/个人微信.png" style="zoom:30%;" />
 
 
-**News:** 
 
-<div style="height: 10px; background-color: #bfc1c2; width: 100%;"></div>
-
-<span style="color: #9D0000;">news!</span>  08/2024. I won an extra point bonus recognition of my department through oral defense. 
 
 
