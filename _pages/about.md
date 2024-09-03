@@ -41,10 +41,10 @@ my wechat: yhl2765428788
 <img src="images/个人微信.png" style="zoom:30%;" />
 
 
-**News:** 08/2024.I was 
+**News:** 
 
-<div style="height: 10px; background-color: #bfc1c2; width: 100%;"></div>
+<div style="height: 10px; background-color: #bfc1c2; width: 666px;"></div>
 
-<span style="color: #9D0000;">news!</span>
+<span style="color: #9D0000;">news!</span>  08/2024. I won an extra point bonus recognition of my department through oral defense. 
 
 
