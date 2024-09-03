@@ -41,8 +41,10 @@ my wechat: yhl2765428788
 <img src="images/个人微信.png" style="zoom:30%;" />
 
 
-**News:**
+**News:** 08/2024.I was 
 
 <div style="height: 15px; background-color: #808080;"></div>
+
+<span style="color: red;">news!</span> 
 
 
