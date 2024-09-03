@@ -43,8 +43,8 @@ my wechat: yhl2765428788
 
 **News:** 08/2024.I was 
 
-<div style="height: 15px; background-color: #808080;"></div>
+<div style="height: 10px; background-color: #bfc1c2; width: 100%;"></div>
 
-<span style="color: red;">news!</span> 
+<span style="color: #9D0000;">news!</span>
 
 
