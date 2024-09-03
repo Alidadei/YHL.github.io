@@ -43,7 +43,7 @@ my wechat: yhl2765428788
 
 **News:** 
 
-<div style="height: 10px; background-color: #bfc1c2; width: 666px;"></div>
+<div style="height: 10px; background-color: #bfc1c2; width: 100%;"></div>
 
 <span style="color: #9D0000;">news!</span>  08/2024. I won an extra point bonus recognition of my department through oral defense. 
 
