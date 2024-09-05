@@ -13,11 +13,11 @@ I am currently a senior student who **has obtained the qualification for recomme
 
 <u>Overall grade</u>: 93.97
 
-<u>Ranking </u>:  **top 3.6% ** (4/113)
+<u>Ranking </u>:  **top 3.6%** (4/113)
 
 <u>Honors</u>: the Second-Class Scholarship, title of Outstanding Student
 
-<u>English</u>: CET-4: 657; CET-6: 622
+<u>English</u>: **CET-4: 657; CET-6: 622**
 
 #   <u></u>
 
