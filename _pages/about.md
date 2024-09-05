@@ -7,13 +7,13 @@ redirect_from:
   - /about.html
 ---
 
-Now I'm turning to be a senior student in Ocean University of China. My major is Electronic Engineering and my research interest includes Deep Reinforcement Learning, LLM, Intelligent Decision Making，and Human-computer Interaction. I aspire to contribute to the arrival of AGI in my future research life!
+I am currently a senior student who **has obtained the qualification for recommended postgraduate admission** in Ocean University of China. My major is Electronic Engineering and my **research interest** includes Deep Reinforcement Learning, LLM, Intelligent Decision Making，and Human-computer Interaction. **I aspire to contribute to the arrival of AGI in my future research life!**
 
 **Academic Background:**
 
 <u>Overall grade</u>: 93.97
 
-<u>Ranking </u>: top 3.6% (4/113)
+<u>Ranking </u>: **top 3.6% ** (4/113)
 
 <u>Honors</u>: the Second-Class Scholarship, title of Outstanding Student
 
