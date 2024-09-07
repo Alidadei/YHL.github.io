@@ -5,4 +5,5 @@ collection: portfolio
 ---
 
 This is an UML figure about a MUD Game I've developed during my junior year: 
-1<br/><img src='/images/UML类图.png'>
+(link: [https://gitee.com/tea-garden-study/myfirst-repository])
+<br/><img src='/images/UML类图.png'>
