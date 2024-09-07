@@ -17,7 +17,7 @@ I am currently a senior student who **has obtained the qualification for recomme
 
 <div style="text-align: center;">
   <img src="images/三年成绩不断进步.jpg" alt="Image Description" />
-  <p style="font-size: small;"> Over the past three years, my academic performance has been continuously improving!</p>
+  <p style="font-size: middle;"> ▲ Over the past three years, my academic performance has been continuously improving!</p>
 </div>
 
 <u>Honors</u>: the Second-Class Scholarship, title of Outstanding Student
