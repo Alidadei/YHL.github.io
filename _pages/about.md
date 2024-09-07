@@ -40,7 +40,7 @@ Outside of academics, I have a variety of hobbies，such as jogging & table tenn
 In terms of programming skills, I am experienced in using C, MATLAB, Python, and Verilog, which are all essential tools in my research field.
 
 I have also participated in numerous competitions, which have comprehensively improved my professional and collaborative skills：
-<div style="text-align: center;">
+<div style="display: flex; justify-content: space-between;">
 <img src="images/第四届国际海洋工程准备科技创新大赛.jpg" alt="Image 1" style="width: 50%; display: inline-block;" />
 <img src="images/第五届海工.jpg" alt="Image 2" style="width: 50%; display: inline-block;" />
 <img src="images/山东省机器人大赛三等奖.jpg" alt="Image 3" style="width: 50%;  display: inline-block;" />
@@ -48,9 +48,9 @@ I have also participated in numerous competitions, which have comprehensively im
   <p style="font-size: small;">Competitions I've participated. </p>
 </div>
 Besides, I‘ve taken part in many social practice activities. These activities have significantly strengthened my time management and organizational  capabilities.
-
+<div style="text-align: center;">
 <img src="images/华为HSD证书.jpg" style="zoom:30%;" />
-
+</div>
 
 
 **News:** 
