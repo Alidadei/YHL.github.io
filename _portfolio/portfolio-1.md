@@ -1,5 +1,5 @@
 ---
-title: "note about acoustic"
+title: "MUD Game"
 excerpt: "Short description of portfolio item number 1<br/><img src='/images/个人微信.png'>"
 collection: portfolio
 ---
