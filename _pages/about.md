@@ -41,10 +41,10 @@ In terms of programming skills, I am experienced in using C, MATLAB, Python, and
 
 I have also participated in numerous competitions, which have comprehensively improved my professional and collaborative skills：
 <div style="text-align: center;">
-<img src="images/第四届国际海洋工程准备科技创新大赛.jpg" alt="Image 1" style="width: 50%; display: inline-block;">
-<img src="images/第五届海工.jpg" alt="Image 2" style="width: 50%; display: inline-block;">
-<img src="images/山东省机器人大赛三等奖.jpg" alt="Image 3" style="width: 50%;  display: inline-block;">
-<img src="images/第十四届蓝桥杯电子赛省奖.jpg" alt="Image 4" style="width: 50%;  display: inline-block;">
+<img src="images/第四届国际海洋工程准备科技创新大赛.jpg" alt="Image 1" style="width: 50%; display: inline-block;"/>
+<img src="images/第五届海工.jpg" alt="Image 2" style="width: 50%; display: inline-block;"/>
+<img src="images/山东省机器人大赛三等奖.jpg" alt="Image 3" style="width: 50%;  display: inline-block;"/>
+<img src="images/第十四届蓝桥杯电子赛省奖.jpg" alt="Image 4" style="width: 50%;  display: inline-block;"/>
 </div>
 Besides, I‘ve taken part in many social practice activities. These activities have significantly strengthened my time management and organizational  capabilities.
 
