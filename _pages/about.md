@@ -47,7 +47,7 @@ I have also participated in numerous competitions, which have comprehensively im
 <div style="display: flex; justify-content: space-between;">
 <img src="images/山东省机器人大赛三等奖.jpg" alt="Image 3" style="width: 50%; display: inline-block;" />
 <img src="images/第十四届蓝桥杯电子赛省奖.jpg" alt="Image 4" style="width: 50%; display: inline-block;" />
-  <p style="font-size: small;">and so on ...... </p>
+  <p style="font-size: small;"> and so on ...... </p>
 </div>
 
 
