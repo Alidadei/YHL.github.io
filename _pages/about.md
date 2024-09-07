@@ -20,7 +20,14 @@ I am currently a senior student who **has obtained the qualification for recomme
   <p style="font-size: middle;"> ▲ Over the past three years, my academic performance has been continuously improving!</p>
 </div>
 
+
 <u>Honors</u>: the Second-Class Scholarship, title of Outstanding Student
+
+<div style="text-align: center;">
+  <img src="images/二等奖学金.jpg" alt="Image 1 Description" style="width: 49%; display: inline-block;" />
+  <img src="/path/to/优秀学生.jpg" alt="Image 2 Description" style="width: 49%; display: inline-block;" />
+  <p style="font-size: small;">Honors and awards I've got. </p>
+</div>
 
 <u>English</u>: **CET-4: 657; CET-6: 622**
 
@@ -32,9 +39,18 @@ Outside of academics, I have a variety of hobbies，such as jogging & table tenn
 
 In terms of programming skills, I am experienced in using C, MATLAB, Python, and Verilog, which are all essential tools in my research field.
 
-I have also participated in numerous competitions, which have comprehensively improved my professional and collaborative skills.
+I have also participated in numerous competitions, which have comprehensively improved my professional and collaborative skills：
+
+<img src="images/第四届国际海洋工程准备科技创新大赛.jpg" alt="Image 1" style="width: 25%; margin-right: 5px; display: inline-block;">
+<img src="images/第五届海工赛.jpg" alt="Image 2" style="width: 25%; margin-right: 5px; display: inline-block;">
+<img src="images/山东省机器人大赛三等奖.jpg" alt="Image 3" style="width: 25%; margin-right: 5px; display: inline-block;">
+<img src="images/第十四届蓝桥杯电子赛省奖.jpg" alt="Image 4" style="width: 25%; margin-right: 5px; display: inline-block;">
 
 Besides, I‘ve taken part in many social practice activities. These activities have significantly strengthened my time management and organizational  capabilities.
+
+<img src="images/华为HSD证书.jpg" style="zoom:30%;" />
+
+
 
 **News:** 
 
