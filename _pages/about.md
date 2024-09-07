@@ -15,6 +15,11 @@ I am currently a senior student who **has obtained the qualification for recomme
 
 <u>Ranking </u>:  **top 3.6%** (4/113)
 
+<div style="text-align: center;">
+  <img src="images/三年成绩不断进步.jpg" alt="Image Description" />
+  <p style="font-size: small;"> Over the past three years, my academic performance has been continuously improving!</p>
+</div>
+
 <u>Honors</u>: the Second-Class Scholarship, title of Outstanding Student
 
 <u>English</u>: **CET-4: 657; CET-6: 622**
