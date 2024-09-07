@@ -1,9 +1,11 @@
 ---
 title: "MUD Game"
-excerpt: "Short description of portfolio item number 1<br/><img src='/images/个人微信.png'>"
+excerpt: "I developed a MUD Game during my junior year on my own initiative out of personal interest with my fellows. "
 collection: portfolio
 ---
 
-This is an UML class diagram about a MUD Game I've developed during my junior year: 
+This is an UML class diagram which I made about the MUD Game : 
 (link: [https://gitee.com/tea-garden-study/myfirst-repository])
-<br/><img src='/images/UML类图.png'>
+<div style="text-align: center;">
+  <img src="images/UML类图.png" alt="Image Description" />
+</div>
