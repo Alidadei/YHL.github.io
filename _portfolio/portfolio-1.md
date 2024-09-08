@@ -5,7 +5,7 @@ collection: portfolio
 ---
 
 This is an UML class diagram which I made about the MUD Game : 
-(link: [https://gitee.com/tea-garden-study/myfirst-repository])
+link:[YHL'S MUD Game-gitee](https://gitee.com/tea-garden-study/myfirst-repository)
 
 
   <img src= "images/UML类图.png" alt="Image Description" />
