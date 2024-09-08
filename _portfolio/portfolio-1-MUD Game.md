@@ -8,4 +8,5 @@ collection: portfolio
 This is an UML class diagram which I made for our MUD Game : 
 
 <img src="UML.png" alt="UML class diagram of the game" style="max-width: 88% ; height: auto;" />
-![UML class diagram](UML.png)
+
+![UML CLASS DIAGRAM](_portfolio/UML.png)
