@@ -16,7 +16,7 @@ redirect_from:
 ###   2018-2021  ||   Senior High School of Shenzhen Foreign Language School **as** Publicity Committee Member
 ###   2021-present ||   Ocean University of China || School Calligraphy Association Officer, Self-improvement Club Volunteer
 
-## Research Projects
+## Research Experience
 ======================================
 ### 2022.11-2023.11   ||                   校级大创：基于 stm32 的智能桌面系统   ||              负责人
 
