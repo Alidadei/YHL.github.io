@@ -8,4 +8,4 @@ This is an UML class diagram which I made for our MUD Game :
 
 (link:[YHL'S MUD Game-gitee](https://gitee.com/tea-garden-study/myfirst-repository))
 
-<img src="images/UML类图.png" alt="UML class diagram of the game" style="max-width: 100%; height: auto;" />
+<img src="images/UML.png" alt="UML class diagram of the game" style="max-width: 100%; height: auto;" />
