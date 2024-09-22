@@ -16,7 +16,7 @@ I am currently a senior student who **has obtained the qualification for recomme
 <u>Ranking </u>:  **top 3.6%** (4/113)
 
 <div style="text-align: center;">
-  <img src="images/improvinggrade.png" alt="Image Description" />
+  <img src="images/mygrade.png" alt="Image Description" />
   <p style="font-size: small;"> ▲ Over the past three years, my academic performance has been continuously improving! I'm always making progress and never go backward ! </p>
 </div>
 
