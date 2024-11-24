@@ -7,7 +7,8 @@ redirect_from:
   - /about.html
 ---
 
-I am currently a senior student who **has obtained the qualification for recommended postgraduate admission** in Ocean University of China. My major is Electronic Engineering and my **research interest** includes Deep Reinforcement Learning, LLM, Intelligent Decision Making，and Human-computer Interaction. **I aspire to contribute to the arrival of AGI in my future research life!**
+I am currently a senior student in Ocean University of China who **has obtained the qualification for recommended postgraduate admission** and has been **directly admitted to the Ph.D. of Medical Artificial Intelligence at Fudan University**.
+My major during the undergraduate study is Electronic Engineering and my **research interest** includes Deep Reinforcement Learning, LLM, Intelligent Decision Making，and Human-computer Interaction. **I aspire to contribute to the arrival of AGI in my future research life!**
 
 **Academic Background:**
 
@@ -60,7 +61,11 @@ Besides, I‘ve taken part in many social practice activities. These activities 
 
 **News:** 
 
+
+
 <div style="height: 10px; background-color: #bfc1c2; width: 100%;"></div>
+
+<span style="color: #9D0000;">news!</span>  26/09/2024. I have been **directly admitted to the Ph.D. of Medical Artificial Intelligence at Fudan University**!
 
 <span style="color: #9D0000;">news!</span>  08/2024. I won an extra point bonus recognition of my department through oral defense. 
 
