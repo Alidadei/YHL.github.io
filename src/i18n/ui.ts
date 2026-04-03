@@ -1,0 +1,82 @@
+import type { Lang } from '../data/site';
+
+const ui = {
+  zh: {
+    'nav.home': '首页',
+    'nav.about': '关于',
+    'nav.blog': '博客',
+    'nav.projects': '项目',
+    'nav.publications': '论文',
+    'nav.cv': '简历',
+    'nav.contact': '联系',
+    'site.description': 'Harry Yu 的个人网站',
+    'blog.readMore': '阅读全文',
+    'blog.publishedOn': '发布于',
+    'blog.tags': '标签',
+    'blog.allPosts': '所有文章',
+    'blog.search': '搜索文章...',
+    'blog.toc': '目录',
+    'blog.readingTime': '分钟阅读',
+    'projects.viewAll': '查看所有项目',
+    'projects.github': 'GitHub',
+    'projects.demo': '在线演示',
+    'cv.download': '下载 PDF',
+    'cv.education': '教育经历',
+    'cv.research': '研究经历',
+    'cv.skills': '技能',
+    'cv.awards': '获奖',
+    'contact.name': '姓名',
+    'contact.email': '邮箱',
+    'contact.message': '消息',
+    'contact.send': '发送',
+    'footer.rights': '版权所有',
+    'lang.switch': 'English',
+    'hero.greeting': '你好，我是',
+    'hero.role': '复旦大学医学人工智能博士研究生',
+    'hero.interests': '研究兴趣',
+  },
+  en: {
+    'nav.home': 'Home',
+    'nav.about': 'About',
+    'nav.blog': 'Blog',
+    'nav.projects': 'Projects',
+    'nav.publications': 'Publications',
+    'nav.cv': 'CV',
+    'nav.contact': 'Contact',
+    'site.description': 'Harry Yu\'s personal website',
+    'blog.readMore': 'Read more',
+    'blog.publishedOn': 'Published on',
+    'blog.tags': 'Tags',
+    'blog.allPosts': 'All posts',
+    'blog.search': 'Search posts...',
+    'blog.toc': 'Table of Contents',
+    'blog.readingTime': 'min read',
+    'projects.viewAll': 'View all projects',
+    'projects.github': 'GitHub',
+    'projects.demo': 'Live Demo',
+    'cv.download': 'Download PDF',
+    'cv.education': 'Education',
+    'cv.research': 'Research Experience',
+    'cv.skills': 'Skills',
+    'cv.awards': 'Awards',
+    'contact.name': 'Name',
+    'contact.email': 'Email',
+    'contact.message': 'Message',
+    'contact.send': 'Send',
+    'footer.rights': 'All rights reserved',
+    'lang.switch': '中文',
+    'hero.greeting': 'Hi, I\'m',
+    'hero.role': 'Ph.D. Student in Medical AI at Fudan University',
+    'hero.interests': 'Research Interests',
+  },
+} as const;
+
+export type UIKey = keyof typeof ui.zh;
+
+export function getUI(lang: Lang, key: UIKey): string {
+  return ui[lang][key] || ui.zh[key] || key;
+}
+
+export function useTranslations(lang: Lang) {
+  return (key: UIKey) => getUI(lang, key);
+}

@@ -1,12 +1,24 @@
-# Ignore the contents of the _site directory
-_site/
+# build output
+dist/
+# generated types
+.astro/
 
-# Ignore the directory for local files during development
-local/
+# dependencies
+node_modules/
 
-# Ignore the Gemfile that is generated
-Gemfile.lock
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 
-# Ingore files created by npm
-node_modules
-package-lock.json
+
+# environment variables
+.env
+.env.production
+
+# macOS-specific files
+.DS_Store
+
+# jetbrains setting folder
+.idea/

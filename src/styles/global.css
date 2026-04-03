@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+/* 温暖米色配色方案 */
+@theme {
+  --color-primary: #5b4636;
+  --color-primary-light: #7a6252;
+  --color-primary-dark: #3d2e22;
+  --color-accent: #b07d4f;
+  --color-accent-light: #c99a6b;
+  --color-bg: #faf6f0;
+  --color-bg-secondary: #f3ece2;
+  --color-bg-tertiary: #ebe2d4;
+  --color-text: #3a2e24;
+  --color-text-secondary: #5e4d3e;
+  --color-text-muted: #8c7b6a;
+  --color-border: #ddd2c2;
+  --color-success: #6b8e4e;
+  --color-warning: #c49432;
+  --color-error: #b84c3a;
+}
+
+/* 基础排版 */
+body {
+  font-family: 'Noto Sans SC', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  line-height: 1.8;
+}
+
+/* 克制的过渡动画 */
+.fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 代码高亮 */
+pre {
+  overflow-x: auto;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+/* 滚动条美化 */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 3px;
+}
