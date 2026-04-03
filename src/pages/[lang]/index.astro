@@ -1,0 +1,146 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { siteConfig, type Lang } from '../../data/site';
+import { getUI } from '../../i18n/ui';
+import { getCollection } from 'astro:content';
+import Timeline from '../../components/timeline/Timeline.tsx';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'zh' } }, { params: { lang: 'en' } }];
+}
+
+const { lang } = Astro.params as { lang: Lang };
+const t = getUI.bind(null, lang as Lang);
+const author = siteConfig.author;
+
+// Get recent posts
+const allPosts = await getCollection('posts', ({ data }) => data.lang === lang && !data.draft);
+const recentPosts = allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime()).slice(0, 3);
+
+// Get featured projects
+const allProjects = await getCollection('projects', ({ data }) => data.lang === lang && data.featured);
+
+// Timeline data
+const timelineItems = lang === 'zh' ? [
+  { date: '2024.09', title: '复旦大学直博录取', description: '医学人工智能博士研究生', type: 'education' as const },
+  { date: '2023.08 - 2024.08', title: '"智能自主系统"课题组', description: '参与 LLM+RL 机器人学习研究', type: 'research' as const },
+  { date: '2024.08', title: '推免答辩获额外加分', description: '院系推免名额认定', type: 'award' as const },
+  { date: '2023', title: '全国大学生商务英语竞赛二等奖', description: '', type: 'competition' as const },
+  { date: '2022.11 - 2023.11', title: '校级大创：智能桌面系统', description: '基于 STM32，项目负责人', type: 'research' as const },
+  { date: '2023', title: '二等奖学金 / 优秀学生', description: '中国海洋大学', type: 'award' as const },
+] : [
+  { date: '2024.09', title: 'Admitted to Fudan University Ph.D.', description: 'Medical AI doctoral program', type: 'education' as const },
+  { date: '2023.08 - 2024.08', title: '"Intelligent Autonomous Systems" Research Group', description: 'LLM + RL robotics research', type: 'research' as const },
+  { date: '2024.08', title: 'Recommendation Admission Bonus', description: 'Department oral defense', type: 'award' as const },
+  { date: '2023', title: 'Business English Competition - 2nd Prize', description: 'National level', type: 'competition' as const },
+  { date: '2022.11 - 2023.11', title: 'Innovation Project: Smart Desktop System', description: 'STM32-based, project leader', type: 'research' as const },
+  { date: '2023', title: 'Second-Class Scholarship / Outstanding Student', description: 'Ocean University of China', type: 'award' as const },
+];
+---
+
+<PageLayout title={lang === 'zh' ? '首页' : 'Home'}>
+  <!-- Hero Section -->
+  <section class="text-center py-16 sm:py-24">
+    <p class="text-accent text-lg mb-2">{t('hero.greeting')}</p>
+    <h1 class="text-4xl sm:text-5xl font-bold text-primary mb-4">
+      {author.name}
+    </h1>
+    <p class="text-xl text-text-secondary mb-6 max-w-2xl mx-auto">
+      {t('hero.role')}
+    </p>
+    <div class="flex flex-wrap justify-center gap-2 mb-8">
+      {author.researchInterests.map((interest) => (
+        <span class="px-3 py-1.5 text-sm rounded-full bg-accent/10 text-accent border border-accent/20">
+          {interest}
+        </span>
+      ))}
+    </div>
+    <div class="flex justify-center gap-4">
+      <a
+        href={`/${lang}/about/`}
+        class="px-6 py-2.5 bg-primary text-white rounded-lg hover:bg-primary-light transition-colors"
+      >
+        {t('nav.about')}
+      </a>
+      <a
+        href={`/${lang}/cv/`}
+        class="px-6 py-2.5 border border-primary text-primary rounded-lg hover:bg-primary hover:text-white transition-colors"
+      >
+        {t('nav.cv')}
+      </a>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section class="py-12 border-t border-border">
+    <h2 class="text-2xl font-bold text-primary mb-8">
+      {lang === 'zh' ? '近期动态' : 'Recent Highlights'}
+    </h2>
+    <Timeline client:visible items={timelineItems} lang={lang} />
+  </section>
+
+  <!-- Recent Posts -->
+  {recentPosts.length > 0 && (
+    <section class="py-12 border-t border-border">
+      <div class="flex items-center justify-between mb-8">
+        <h2 class="text-2xl font-bold text-primary">{t('nav.blog')}</h2>
+        <a href={`/${lang}/blog/`} class="text-accent hover:text-accent-light text-sm">
+          {t('blog.allPosts')} &rarr;
+        </a>
+      </div>
+      <div class="grid gap-6 md:grid-cols-3">
+        {recentPosts.map((post) => {
+          const slug = post.id.split('/').slice(1).join('/');
+          return (
+            <a
+              href={`/${lang}/blog/${slug}/`}
+              class="block p-6 rounded-lg border border-border hover:border-accent/50 hover:shadow-sm transition-all"
+            >
+              <h3 class="font-semibold text-primary mb-2 line-clamp-2">{post.data.title}</h3>
+              {post.data.description && (
+                <p class="text-sm text-text-muted line-clamp-2">{post.data.description}</p>
+              )}
+              <time class="text-xs text-text-muted mt-3 block">
+                {post.data.date.toLocaleDateString(lang === 'zh' ? 'zh-CN' : 'en-US', {
+                  year: 'numeric', month: 'short', day: 'numeric'
+                })}
+              </time>
+            </a>
+          );
+        })}
+      </div>
+    </section>
+  )}
+
+  <!-- Featured Projects -->
+  {allProjects.length > 0 && (
+    <section class="py-12 border-t border-border">
+      <div class="flex items-center justify-between mb-8">
+        <h2 class="text-2xl font-bold text-primary">{t('nav.projects')}</h2>
+        <a href={`/${lang}/projects/`} class="text-accent hover:text-accent-light text-sm">
+          {t('projects.viewAll')} &rarr;
+        </a>
+      </div>
+      <div class="grid gap-6 md:grid-cols-2">
+        {allProjects.map((project) => (
+          <div class="p-6 rounded-lg border border-border hover:border-accent/50 hover:shadow-sm transition-all">
+            <h3 class="font-semibold text-primary mb-2">{project.data.title}</h3>
+            <p class="text-sm text-text-muted mb-4">{project.data.description}</p>
+            <div class="flex gap-3">
+              {project.data.github && (
+                <a href={project.data.github} target="_blank" rel="noopener noreferrer" class="text-sm text-accent hover:text-accent-light">
+                  {t('projects.github')} &rarr;
+                </a>
+              )}
+              {project.data.demo && (
+                <a href={project.data.demo} target="_blank" rel="noopener noreferrer" class="text-sm text-accent hover:text-accent-light">
+                  {t('projects.demo')} &rarr;
+                </a>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
+</PageLayout>

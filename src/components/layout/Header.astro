@@ -1,0 +1,75 @@
+---
+import { siteConfig, type Lang } from '../../data/site';
+import { getLangFromUrl, getAlternateUrl, getLocalizedPath } from '../../lib/i18n';
+import { getUI } from '../../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const navItems = siteConfig.nav[lang];
+const altLang = lang === 'zh' ? 'en' : 'zh';
+const altUrl = getAlternateUrl(Astro.url);
+const switchLabel = getUI(lang, 'lang.switch');
+---
+
+<header class="sticky top-0 z-50 bg-bg/95 backdrop-blur-sm border-b border-border">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <!-- Logo -->
+      <a href={`/${lang}/`} class="text-lg font-bold text-primary hover:text-primary-light transition-colors">
+        {siteConfig.name}
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center gap-1">
+        {navItems.map((item) => (
+          <a
+            href={item.href}
+            class="px-3 py-2 text-sm text-text-secondary hover:text-primary rounded-md hover:bg-bg-secondary transition-colors"
+          >
+            {item.label}
+          </a>
+        ))}
+      </nav>
+
+      <!-- Language Toggle + Mobile Menu -->
+      <div class="flex items-center gap-2">
+        <a
+          href={altUrl}
+          class="px-3 py-1.5 text-sm rounded-md border border-border text-text-secondary hover:text-primary hover:border-primary transition-colors"
+        >
+          {switchLabel}
+        </a>
+
+        <!-- Mobile menu button -->
+        <button
+          id="mobile-menu-btn"
+          class="md:hidden p-2 rounded-md text-text-secondary hover:bg-bg-secondary"
+          aria-label="Toggle menu"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <nav id="mobile-menu" class="md:hidden hidden pb-4">
+      {navItems.map((item) => (
+        <a
+          href={item.href}
+          class="block px-3 py-2 text-sm text-text-secondary hover:text-primary rounded-md hover:bg-bg-secondary transition-colors"
+        >
+          {item.label}
+        </a>
+      ))}
+    </nav>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  btn?.addEventListener('click', () => {
+    menu?.classList.toggle('hidden');
+  });
+</script>

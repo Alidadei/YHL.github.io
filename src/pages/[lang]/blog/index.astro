@@ -1,0 +1,82 @@
+---
+import PageLayout from '../../../layouts/PageLayout.astro';
+import { type Lang } from '../../../data/site';
+import { getUI } from '../../../i18n/ui';
+import { getCollection } from 'astro:content';
+import SearchBar from '../../../components/blog/SearchBar.tsx';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'zh' } }, { params: { lang: 'en' } }];
+}
+
+const { lang } = Astro.params as { lang: Lang };
+const t = getUI.bind(null, lang as Lang);
+
+const allPosts = await getCollection('posts', ({ data }) => data.lang === lang && !data.draft);
+const posts = allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const allTags = [...new Set(posts.flatMap((p) => p.data.tags))].sort();
+
+// Serialize posts data for client-side search
+const postsJson = JSON.stringify(posts.map((p) => ({
+  id: p.id,
+  data: { title: p.data.title, description: p.data.description, tags: p.data.tags, date: p.data.date },
+})));
+---
+
+<PageLayout title={t('nav.blog')}>
+  <h1 class="text-3xl font-bold text-primary mb-6">{t('nav.blog')}</h1>
+
+  <!-- Search -->
+  <div class="mb-6">
+    <SearchBar client:load lang={lang} />
+    <script id="search-posts-data" type="application/json" set:html={postsJson} />
+  </div>
+
+  {allTags.length > 0 && (
+    <div class="flex flex-wrap gap-2 mb-8">
+      {allTags.map((tag) => (
+        <span class="px-3 py-1 text-sm rounded-full bg-bg-tertiary text-text-secondary hover:bg-accent/10 hover:text-accent cursor-pointer transition-colors">
+          {tag}
+        </span>
+      ))}
+    </div>
+  )}
+
+  {posts.length === 0 ? (
+    <p class="text-text-muted">{lang === 'zh' ? '暂无文章' : 'No posts yet.'}</p>
+  ) : (
+    <div class="space-y-6">
+      {posts.map((post) => {
+        const slug = post.id.split('/').slice(1).join('/');
+        return (
+          <a
+            href={`/${lang}/blog/${slug}/`}
+            class="block p-6 rounded-lg border border-border hover:border-accent/50 hover:shadow-sm transition-all group"
+          >
+            <h2 class="text-xl font-semibold text-primary group-hover:text-accent transition-colors mb-2">
+              {post.data.title}
+            </h2>
+            {post.data.description && (
+              <p class="text-text-muted text-sm mb-3">{post.data.description}</p>
+            )}
+            <div class="flex items-center justify-between">
+              <time class="text-xs text-text-muted">
+                {post.data.date.toLocaleDateString(lang === 'zh' ? 'zh-CN' : 'en-US', {
+                  year: 'numeric', month: 'long', day: 'numeric'
+                })}
+              </time>
+              {post.data.tags.length > 0 && (
+                <div class="flex gap-1">
+                  {post.data.tags.slice(0, 3).map((tag) => (
+                    <span class="px-2 py-0.5 text-xs rounded bg-bg-tertiary text-text-muted">{tag}</span>
+                  ))}
+                </div>
+              )}
+            </div>
+          </a>
+        );
+      })}
+    </div>
+  )}
+</PageLayout>

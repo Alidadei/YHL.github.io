@@ -1,0 +1,60 @@
+---
+import '../styles/global.css';
+import { siteConfig, type Lang } from '../data/site';
+import { getUI } from '../i18n/ui';
+import { getAlternateUrl, getLangFromUrl } from '../lib/i18n';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+}
+
+const { title, description, image } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const altLang = getAlternateUrl(Astro.url);
+const siteTitle = title
+  ? `${title} | ${siteConfig.name}`
+  : siteConfig.title;
+const siteDescription = description || siteConfig.description[lang];
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang={lang === 'zh' ? 'zh-CN' : 'en'}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{siteTitle}</title>
+    <meta name="description" content={siteDescription} />
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="alternate" hreflang={lang === 'zh' ? 'zh-CN' : 'en'} href={canonicalURL} />
+    <link rel="alternate" hreflang={lang === 'zh' ? 'en' : 'zh-CN'} href={new URL(altLang, Astro.site)} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={siteTitle} />
+    <meta property="og:description" content={siteDescription} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:locale" content={lang === 'zh' ? 'zh_CN' : 'en_US'} />
+    {image && <meta property="og:image" content={new URL(image, Astro.site)} />}
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={siteTitle} />
+    <meta name="twitter:description" content={siteDescription} />
+    {image && <meta name="twitter:image" content={new URL(image, Astro.site)} />}
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body class="min-h-screen bg-bg text-text antialiased">
+    <slot />
+  </body>
+</html>
