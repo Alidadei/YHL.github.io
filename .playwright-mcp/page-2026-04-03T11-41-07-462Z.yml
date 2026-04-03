@@ -1,0 +1,109 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e4]:
+      - link "余泓麟 / Honglin Yu" [ref=e5] [cursor=pointer]:
+        - /url: /zh/
+      - navigation [ref=e6]:
+        - link "首页" [ref=e7] [cursor=pointer]:
+          - /url: /zh/
+        - link "关于" [ref=e8] [cursor=pointer]:
+          - /url: /zh/about/
+        - link "博客" [ref=e9] [cursor=pointer]:
+          - /url: /zh/blog/
+        - link "项目" [ref=e10] [cursor=pointer]:
+          - /url: /zh/projects/
+        - link "论文" [ref=e11] [cursor=pointer]:
+          - /url: /zh/publications/
+        - link "简历" [ref=e12] [cursor=pointer]:
+          - /url: /zh/cv/
+        - link "联系" [ref=e13] [cursor=pointer]:
+          - /url: /zh/contact/
+      - link "English" [ref=e15] [cursor=pointer]:
+        - /url: /en/YHL.github.io/zh/about
+  - main [ref=e16]:
+    - generic [ref=e17]:
+      - generic [ref=e18]:
+        - paragraph [ref=e19]:
+          - text: 我是中国海洋大学电子工程专业大四学生，已获得推免资格并被
+          - strong [ref=e20]: 复旦大学医学人工智能博士项目
+          - text: 直博录取。
+        - paragraph [ref=e21]:
+          - text: 我的
+          - strong [ref=e22]: 研究兴趣
+          - text: 包括深度强化学习、大语言模型、智能决策和人机交互。
+          - strong [ref=e23]: 我期望在未来的科研生涯中为 AGI 的到来贡献自己的力量！
+      - generic [ref=e24]:
+        - heading "学业成绩" [level=2] [ref=e25]
+        - generic [ref=e26]:
+          - paragraph [ref=e27]: "综合绩点: 93.97"
+          - paragraph [ref=e28]:
+            - text: "排名:"
+            - strong [ref=e29]: top 3.6%
+            - text: (4/113)
+        - generic [ref=e30]:
+          - img "Grades" [ref=e31]
+          - paragraph [ref=e32]: ▲ 三年来学业成绩持续提升！不断进步，从不后退！
+      - generic [ref=e33]:
+        - heading "荣誉奖项" [level=2] [ref=e34]
+        - paragraph [ref=e35]: 二等奖学金、优秀学生称号
+        - generic [ref=e36]:
+          - img "Scholarship" [ref=e37]
+          - img "Outstanding Student" [ref=e38]
+        - paragraph [ref=e39]: 获得的荣誉和奖项
+      - generic [ref=e40]:
+        - heading "英语能力" [level=2] [ref=e41]
+        - paragraph [ref=e42]:
+          - strong [ref=e43]: "CET-4: 657; CET-6: 622"
+      - generic [ref=e44]:
+        - heading "竞赛经历" [level=2] [ref=e45]
+        - paragraph [ref=e46]: 我参加了大量竞赛，全面提升了专业技能和团队协作能力：
+        - generic [ref=e47]:
+          - img "Competition 1" [ref=e48]
+          - img "Competition 2" [ref=e49]
+          - img "Competition 3" [ref=e50]
+          - img "Competition 4" [ref=e51]
+        - paragraph [ref=e52]: 等等……
+      - generic [ref=e53]:
+        - heading "社会实践" [level=2] [ref=e54]
+        - paragraph [ref=e55]: 此外，我参与了许多社会实践活动，大大提升了时间管理和组织能力。
+        - img "Huawei HSD Certificate" [ref=e57]
+      - generic [ref=e58]:
+        - heading "其他" [level=2] [ref=e59]
+        - paragraph [ref=e60]: 学业之外，我有多种爱好，如慢跑与乒乓球、拉小提琴和练习书法，它们是我学习生活的调味品。
+        - paragraph [ref=e61]: 编程方面，我熟练使用 C、MATLAB、Python 和 Verilog，这些都是我研究领域的重要工具。
+      - generic [ref=e62]:
+        - heading "News" [level=2] [ref=e63]
+        - generic [ref=e64]:
+          - paragraph [ref=e65]: news! 26/09/2024. 我已被**复旦大学医学人工智能博士项目直博录取**！
+          - paragraph [ref=e66]: news! 08/2024. 我通过口头答辩获得了院系额外加分认可。
+      - generic [ref=e67]:
+        - heading "联系我" [level=2] [ref=e68]
+        - generic [ref=e69]:
+          - paragraph [ref=e70]: "邮箱: yuhl@stu.ouc.edu.cn / 13427917163@163.com"
+          - paragraph [ref=e71]: "微信: yhl2765428788"
+          - img "WeChat QR" [ref=e72]
+  - contentinfo [ref=e73]:
+    - generic [ref=e75]:
+      - paragraph [ref=e76]: © 2026 余泓麟 / Honglin Yu. 版权所有.
+      - generic [ref=e77]:
+        - link "GitHub" [ref=e78] [cursor=pointer]:
+          - /url: https://github.com/Alidadei
+          - img [ref=e79]
+        - link "Email" [ref=e81] [cursor=pointer]:
+          - /url: mailto:yuhl@stu.ouc.edu.cn
+          - img [ref=e82]
+  - generic [ref=e86]:
+    - button "Menu" [ref=e87]:
+      - img [ref=e89]
+      - generic: Menu
+    - button "Inspect" [ref=e93]:
+      - img [ref=e95]
+      - generic: Inspect
+    - button "Audit" [ref=e97]:
+      - generic [ref=e98]:
+        - img [ref=e99]
+        - img [ref=e102]
+      - generic: Audit
+    - button "Settings" [ref=e105]:
+      - img [ref=e107]
+      - generic: Settings

@@ -1,0 +1,74 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e4]:
+      - link "余泓麟 / Honglin Yu" [ref=e5] [cursor=pointer]:
+        - /url: /zh/
+      - navigation [ref=e6]:
+        - link "首页" [ref=e7] [cursor=pointer]:
+          - /url: /zh/
+        - link "关于" [ref=e8] [cursor=pointer]:
+          - /url: /zh/about/
+        - link "博客" [ref=e9] [cursor=pointer]:
+          - /url: /zh/blog/
+        - link "项目" [ref=e10] [cursor=pointer]:
+          - /url: /zh/projects/
+        - link "论文" [ref=e11] [cursor=pointer]:
+          - /url: /zh/publications/
+        - link "简历" [ref=e12] [cursor=pointer]:
+          - /url: /zh/cv/
+        - link "联系" [ref=e13] [cursor=pointer]:
+          - /url: /zh/contact/
+      - link "English" [ref=e15] [cursor=pointer]:
+        - /url: /en/YHL.github.io/zh
+  - main [ref=e16]:
+    - generic [ref=e17]:
+      - paragraph [ref=e18]: 你好，我是
+      - heading "余泓麟" [level=1] [ref=e19]
+      - paragraph [ref=e20]: 复旦大学医学人工智能博士研究生
+      - generic [ref=e21]:
+        - generic [ref=e22]: Deep Reinforcement Learning
+        - generic [ref=e23]: Large Language Models
+        - generic [ref=e24]: Intelligent Decision Making
+        - generic [ref=e25]: Human-Computer Interaction
+      - generic [ref=e26]:
+        - link "关于" [ref=e27] [cursor=pointer]:
+          - /url: /zh/about/
+        - link "简历" [ref=e28] [cursor=pointer]:
+          - /url: /zh/cv/
+    - generic [ref=e29]:
+      - generic [ref=e30]:
+        - heading "博客" [level=2] [ref=e31]
+        - link "所有文章 →" [ref=e32] [cursor=pointer]:
+          - /url: /zh/blog/
+      - generic [ref=e33]:
+        - link "微机原理学习笔记 2023年4月1日" [ref=e34] [cursor=pointer]:
+          - /url: /zh/blog/zh/microcomputer/
+          - heading "微机原理学习笔记" [level=3] [ref=e35]
+          - time [ref=e36]: 2023年4月1日
+        - link "数据结构学习笔记 2023年3月1日" [ref=e37] [cursor=pointer]:
+          - /url: /zh/blog/zh/data-structure/
+          - heading "数据结构学习笔记" [level=3] [ref=e38]
+          - time [ref=e39]: 2023年3月1日
+  - contentinfo [ref=e40]:
+    - generic [ref=e42]:
+      - paragraph [ref=e43]: © 2026 余泓麟 / Honglin Yu. 版权所有.
+      - generic [ref=e44]:
+        - link "GitHub" [ref=e45] [cursor=pointer]:
+          - /url: https://github.com/Alidadei
+          - img [ref=e46]
+        - link "Email" [ref=e48] [cursor=pointer]:
+          - /url: mailto:yuhl@stu.ouc.edu.cn
+          - img [ref=e49]
+  - generic [ref=e53]:
+    - button "Menu" [ref=e54]:
+      - img [ref=e56]
+      - generic: Menu
+    - button "Inspect" [ref=e60]:
+      - img [ref=e62]
+      - generic: Inspect
+    - button "Audit" [ref=e64]:
+      - img [ref=e66]
+      - generic: Audit
+    - button "Settings" [ref=e69]:
+      - img [ref=e71]
+      - generic: Settings
