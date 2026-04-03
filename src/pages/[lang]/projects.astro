@@ -22,17 +22,28 @@ const portfolioItems = await getCollection('portfolio');
   {/* Portfolio items from Jekyll */}
   {portfolioItems.length > 0 && (
     <div class="space-y-6 mb-12">
-      {portfolioItems.map((item) => (
-        <div class="p-6 rounded-lg border border-border hover:border-accent/50 transition-all">
-          <h2 class="text-xl font-semibold text-primary mb-2">{item.data.title}</h2>
-          {item.data.excerpt && (
-            <p class="text-text-secondary text-sm mb-4">{item.data.excerpt}</p>
-          )}
-          {item.data.image && (
-            <img src={item.data.image} alt={item.data.title} class="w-full rounded-lg mb-4" />
-          )}
-        </div>
-      ))}
+      {portfolioItems.map((item) => {
+        const Tag = item.data.link ? 'a' : 'div';
+        const linkProps = item.data.link
+          ? { href: item.data.link, target: '_blank', rel: 'noopener noreferrer' }
+          : {};
+        return (
+          <Tag {...linkProps} class="block p-6 rounded-lg border border-border hover:border-accent/50 transition-all">
+            <h2 class="text-xl font-semibold text-primary mb-2">{item.data.title}</h2>
+            {item.data.excerpt && (
+              <p class="text-text-secondary text-sm mb-4">{item.data.excerpt}</p>
+            )}
+            {item.data.image && (
+              <img src={item.data.image} alt={item.data.title} class="w-full rounded-lg mb-4" />
+            )}
+            {item.data.link && (
+              <span class="text-sm text-accent hover:text-accent-light">
+                {lang === 'zh' ? '查看详情' : 'View Details'} &rarr;
+              </span>
+            )}
+          </Tag>
+        );
+      })}
     </div>
   )}
 

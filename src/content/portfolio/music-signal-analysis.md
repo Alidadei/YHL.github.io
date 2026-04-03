@@ -3,6 +3,7 @@ title: "Music Analysis & Visualization / 音乐分析可视化"
 excerpt: "A Python-based music signal processing system for timbre analysis, instrument classification, and melody visualization — with CLI, one-click launcher, and Gradio web deployment. / 基于 Python 的音乐信号处理系统，实现音色分析、乐器分类与旋律可视化。"
 collection: portfolio
 image: "/images/music-signal-analysis.png"
+link: "/portfolio/music-signal-analysis.html"
 ---
 
 [GitHub Repository](https://github.com/Alidadei/Music_signal_analysis) | [Live Demo (Hugging Face Spaces)](https://huggingface.co/spaces/LunarStar6564168/music-signal-analysis)

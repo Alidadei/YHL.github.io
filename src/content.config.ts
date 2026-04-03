@@ -78,6 +78,7 @@ const portfolio = defineCollection({
     excerpt: z.string().optional(),
     collection: z.literal('portfolio'),
     image: z.string().optional(),
+    link: z.string().optional(),
   }),
 });
 
