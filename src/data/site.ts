@@ -1,14 +1,13 @@
 export const siteConfig = {
-  name: '余泓麟 / Honglin Yu',
-  title: 'About Honglin Yu',
+  name: 'Harry Yu',
+  title: 'About Harry Yu',
   description: {
-    zh: '余泓麟的个人网站 - 复旦大学医学人工智能博士研究生',
-    en: 'Honglin Yu\'s personal website - Ph.D. student in Medical AI at Fudan University',
+    zh: 'Harry Yu 的个人网站 - 复旦大学医学人工智能博士研究生',
+    en: 'Harry Yu\'s personal website - Ph.D. student in Medical AI at Fudan University',
   },
   url: 'https://alidadei.github.io',
   author: {
-    name: '余泓麟',
-    nameEn: 'Honglin Yu',
+    name: 'Harry Yu',
     avatar: '/images/my_profile.png',
     bio: {
       zh: '复旦大学医学人工智能博士研究生',
