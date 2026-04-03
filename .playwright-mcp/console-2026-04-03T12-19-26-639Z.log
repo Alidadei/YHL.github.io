@@ -1,0 +1,90 @@
+[  598262ms] [LOG] [vite] server connection lost. Polling for restart... @ http://localhost:4323/@vite/client:1596
+[  598348ms] [ERROR] [vite] Error: send was called before connect
+    at Object.send (http://localhost:4323/@vite/client:395:15)
+    at HMRClient.send (http://localhost:4323/@vite/client:157:18)
+    at HMRContext.send (http://localhost:4323/@vite/client:119:18)
+    at AstroDevToolbar.setAppStatus (http://localhost:4323/node_modules/.vite/deps/toolbar-OWACWLIF.js?v=4aee257a:440:22)
+    at http://localhost:4323/node_modules/.vite/deps/toolbar-OWACWLIF.js?v=4aee257a:302:18
+    at Array.forEach (<anonymous>)
+    at AstroDevToolbar.connectedCallback (http://localhost:4323/node_modules/.vite/deps/toolbar-OWACWLIF.js?v=4aee257a:301:15)
+    at HTMLDocument.<anonymous> (http://localhost:4323/@id/astro/runtime/client/dev-toolbar/entrypoint.js:236:17) @ http://localhost:4323/@vite/client:1540
+[  598349ms] [ERROR] [vite] Error: send was called before connect
+    at Object.send (http://localhost:4323/@vite/client:395:15)
+    at HMRClient.send (http://localhost:4323/@vite/client:157:18)
+    at HMRContext.send (http://localhost:4323/@vite/client:119:18)
+    at AstroDevToolbar.setAppStatus (http://localhost:4323/node_modules/.vite/deps/toolbar-OWACWLIF.js?v=4aee257a:440:22)
+    at http://localhost:4323/node_modules/.vite/deps/toolbar-OWACWLIF.js?v=4aee257a:302:18
+    at Array.forEach (<anonymous>)
+    at AstroDevToolbar.connectedCallback (http://localhost:4323/node_modules/.vite/deps/toolbar-OWACWLIF.js?v=4aee257a:301:15)
+    at HTMLDocument.<anonymous> (http://localhost:4323/@id/astro/runtime/client/dev-toolbar/entrypoint.js:236:17) @ http://localhost:4323/@vite/client:1540
+[  598349ms] [ERROR] [vite] Error: send was called before connect
+    at Object.send (http://localhost:4323/@vite/client:395:15)
+    at HMRClient.send (http://localhost:4323/@vite/client:157:18)
+    at HMRContext.send (http://localhost:4323/@vite/client:119:18)
+    at AstroDevToolbar.setAppStatus (http://localhost:4323/node_modules/.vite/deps/toolbar-OWACWLIF.js?v=4aee257a:440:22)
+    at http://localhost:4323/node_modules/.vite/deps/toolbar-OWACWLIF.js?v=4aee257a:302:18
+    at Array.forEach (<anonymous>)
+    at AstroDevToolbar.connectedCallback (http://localhost:4323/node_modules/.vite/deps/toolbar-OWACWLIF.js?v=4aee257a:301:15)
+    at HTMLDocument.<anonymous> (http://localhost:4323/@id/astro/runtime/client/dev-toolbar/entrypoint.js:236:17) @ http://localhost:4323/@vite/client:1540
+[  598349ms] [ERROR] [vite] Error: send was called before connect
+    at Object.send (http://localhost:4323/@vite/client:395:15)
+    at HMRClient.send (http://localhost:4323/@vite/client:157:18)
+    at HMRContext.send (http://localhost:4323/@vite/client:119:18)
+    at AstroDevToolbar.setAppStatus (http://localhost:4323/node_modules/.vite/deps/toolbar-OWACWLIF.js?v=4aee257a:440:22)
+    at http://localhost:4323/node_modules/.vite/deps/toolbar-OWACWLIF.js?v=4aee257a:302:18
+    at Array.forEach (<anonymous>)
+    at AstroDevToolbar.connectedCallback (http://localhost:4323/node_modules/.vite/deps/toolbar-OWACWLIF.js?v=4aee257a:301:15)
+    at HTMLDocument.<anonymous> (http://localhost:4323/@id/astro/runtime/client/dev-toolbar/entrypoint.js:236:17) @ http://localhost:4323/@vite/client:1540
+[  598349ms] [ERROR] [vite] Error: send was called before connect
+    at Object.send (http://localhost:4323/@vite/client:395:15)
+    at HMRClient.send (http://localhost:4323/@vite/client:157:18)
+    at HMRContext.send (http://localhost:4323/@vite/client:119:18)
+    at AstroDevToolbar.setAppStatus (http://localhost:4323/node_modules/.vite/deps/toolbar-OWACWLIF.js?v=4aee257a:440:22)
+    at http://localhost:4323/node_modules/.vite/deps/toolbar-OWACWLIF.js?v=4aee257a:302:18
+    at Array.forEach (<anonymous>)
+    at AstroDevToolbar.connectedCallback (http://localhost:4323/node_modules/.vite/deps/toolbar-OWACWLIF.js?v=4aee257a:301:15)
+    at HTMLDocument.<anonymous> (http://localhost:4323/@id/astro/runtime/client/dev-toolbar/entrypoint.js:236:17) @ http://localhost:4323/@vite/client:1540
+[  598367ms] [ERROR] [vite] Error: send was called before connect
+    at Object.send (http://localhost:4323/@vite/client:395:15)
+    at HMRClient.send (http://localhost:4323/@vite/client:157:18)
+    at HMRContext.send (http://localhost:4323/@vite/client:119:18)
+    at AstroDevToolbar.initApp (http://localhost:4323/node_modules/.vite/deps/toolbar-OWACWLIF.js?v=4aee257a:355:25) @ http://localhost:4323/@vite/client:1540
+[  598367ms] [ERROR] [vite] Error: send was called before connect
+    at Object.send (http://localhost:4323/@vite/client:395:15)
+    at HMRClient.send (http://localhost:4323/@vite/client:157:18)
+    at HMRContext.send (http://localhost:4323/@vite/client:119:18)
+    at AstroDevToolbar.initApp (http://localhost:4323/node_modules/.vite/deps/toolbar-OWACWLIF.js?v=4aee257a:355:25) @ http://localhost:4323/@vite/client:1540
+[  598367ms] [ERROR] [vite] Error: send was called before connect
+    at Object.send (http://localhost:4323/@vite/client:395:15)
+    at HMRClient.send (http://localhost:4323/@vite/client:157:18)
+    at HMRContext.send (http://localhost:4323/@vite/client:119:18)
+    at AstroDevToolbar.initApp (http://localhost:4323/node_modules/.vite/deps/toolbar-OWACWLIF.js?v=4aee257a:355:25) @ http://localhost:4323/@vite/client:1540
+[  598368ms] [ERROR] [vite] Error: send was called before connect
+    at Object.send (http://localhost:4323/@vite/client:395:15)
+    at HMRClient.send (http://localhost:4323/@vite/client:157:18)
+    at HMRContext.send (http://localhost:4323/@vite/client:119:18)
+    at AstroDevToolbar.initApp (http://localhost:4323/node_modules/.vite/deps/toolbar-OWACWLIF.js?v=4aee257a:355:25) @ http://localhost:4323/@vite/client:1540
+[  600910ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:4323/favicon.ico:0
+[  601019ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:4323/images/mygrade.png:0
+[  601019ms] [ERROR] %cAstro background: linear-gradient(66.77deg, #D83333 0%, #F041FF 100%); color: white; padding-inline: 4px; border-radius: 2px; font-family: monospace; Error while running audit's match function: TypeError: Failed to fetch @ http://localhost:4323/node_modules/.vite/deps/chunk-LEX3GG7N.js?v=4aee257a:22
+[  601533ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:4323/images/%E4%BA%8C%E7%AD%89%E5%A5%96%E5%AD%A6%E9%87%91.jpg:0
+[  601533ms] [ERROR] %cAstro background: linear-gradient(66.77deg, #D83333 0%, #F041FF 100%); color: white; padding-inline: 4px; border-radius: 2px; font-family: monospace; Error while running audit's match function: TypeError: Failed to fetch @ http://localhost:4323/node_modules/.vite/deps/chunk-LEX3GG7N.js?v=4aee257a:22
+[  604133ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:4323/images/%E4%BC%98%E7%A7%80%E5%AD%A6%E7%94%9F.jpg:0
+[  604133ms] [ERROR] %cAstro background: linear-gradient(66.77deg, #D83333 0%, #F041FF 100%); color: white; padding-inline: 4px; border-radius: 2px; font-family: monospace; Error while running audit's match function: TypeError: Failed to fetch @ http://localhost:4323/node_modules/.vite/deps/chunk-LEX3GG7N.js?v=4aee257a:22
+[  604257ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:4323/images/%E7%AC%AC%E5%9B%9B%E5%B1%8A%E5%9B%BD%E9%99%85%E6%B5%B7%E6%B4%8B%E5%B7%A5%E7%A8%8B%E5%87%86%E5%A4%87%E7%A7%91%E6%8A%80%E5%88%9B%E6%96%B0%E5%A4%A7%E8%B5%9B.jpg:0
+[  604257ms] [ERROR] %cAstro background: linear-gradient(66.77deg, #D83333 0%, #F041FF 100%); color: white; padding-inline: 4px; border-radius: 2px; font-family: monospace; Error while running audit's match function: TypeError: Failed to fetch @ http://localhost:4323/node_modules/.vite/deps/chunk-LEX3GG7N.js?v=4aee257a:22
+[  606720ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:4323/images/%E7%AC%AC%E4%BA%94%E5%B1%8A%E6%B5%B7%E5%B7%A5.jpg:0
+[  606720ms] [ERROR] %cAstro background: linear-gradient(66.77deg, #D83333 0%, #F041FF 100%); color: white; padding-inline: 4px; border-radius: 2px; font-family: monospace; Error while running audit's match function: TypeError: Failed to fetch @ http://localhost:4323/node_modules/.vite/deps/chunk-LEX3GG7N.js?v=4aee257a:22
+[  607152ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:4323/images/%E5%B1%B1%E4%B8%9C%E7%9C%81%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%A4%A7%E8%B5%9B%E4%B8%89%E7%AD%89%E5%A5%96.jpg:0
+[  607152ms] [ERROR] %cAstro background: linear-gradient(66.77deg, #D83333 0%, #F041FF 100%); color: white; padding-inline: 4px; border-radius: 2px; font-family: monospace; Error while running audit's match function: TypeError: Failed to fetch @ http://localhost:4323/node_modules/.vite/deps/chunk-LEX3GG7N.js?v=4aee257a:22
+[  609371ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:4323/images/%E7%AC%AC%E5%8D%81%E5%9B%9B%E5%B1%8A%E8%93%9D%E6%A1%A5%E6%9D%AF%E7%94%B5%E5%AD%90%E8%B5%9B%E7%9C%81%E5%A5%96.jpg:0
+[  609371ms] [ERROR] %cAstro background: linear-gradient(66.77deg, #D83333 0%, #F041FF 100%); color: white; padding-inline: 4px; border-radius: 2px; font-family: monospace; Error while running audit's match function: TypeError: Failed to fetch @ http://localhost:4323/node_modules/.vite/deps/chunk-LEX3GG7N.js?v=4aee257a:22
+[  610041ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:4323/images/%E5%8D%8E%E4%B8%BAHSD%E8%AF%81%E4%B9%A6.jpg:0
+[  610041ms] [ERROR] %cAstro background: linear-gradient(66.77deg, #D83333 0%, #F041FF 100%); color: white; padding-inline: 4px; border-radius: 2px; font-family: monospace; Error while running audit's match function: TypeError: Failed to fetch @ http://localhost:4323/node_modules/.vite/deps/chunk-LEX3GG7N.js?v=4aee257a:22
+[  612370ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:4323/images/%E4%B8%AA%E4%BA%BA%E5%BE%AE%E4%BF%A1.png:0
+[  612370ms] [ERROR] %cAstro background: linear-gradient(66.77deg, #D83333 0%, #F041FF 100%); color: white; padding-inline: 4px; border-radius: 2px; font-family: monospace; Error while running audit's match function: TypeError: Failed to fetch @ http://localhost:4323/node_modules/.vite/deps/chunk-LEX3GG7N.js?v=4aee257a:22
+[  612371ms] [ERROR] [vite] Error: send was called before connect
+    at Object.send (http://localhost:4323/@vite/client:395:15)
+    at HMRClient.send (http://localhost:4323/@vite/client:157:18)
+    at HMRContext.send (http://localhost:4323/@vite/client:119:18)
+    at AstroDevToolbar.initApp (http://localhost:4323/node_modules/.vite/deps/toolbar-OWACWLIF.js?v=4aee257a:355:25) @ http://localhost:4323/@vite/client:1540

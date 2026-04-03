@@ -1,0 +1,235 @@
+import { useState, useMemo, useEffect } from 'react';
+
+interface SearchBarProps {
+  lang: 'zh' | 'en';
+}
+
+const labels = {
+  zh: { placeholder: '搜索文章...', noResults: '没有找到匹配的文章' },
+  en: { placeholder: 'Search posts...', noResults: 'No matching posts found' },
+};
+
+interface Post {
+  id: string;
+  data: {
+    title: string;
+    description?: string;
+    tags: string[];
+    date: string;
+  };
+}
+
+export default function SearchBar({ lang }: SearchBarProps) {
+  const [query, setQuery] = useState('');
+  const [posts, setPosts] = useState<Post[]>([]);
+  const t = labels[lang];
+
+  useEffect(() => {
+    const el = document.getElementById('search-posts-data');
+    if (el) {
+      try { setPosts(JSON.parse(el.textContent || '[]')); } catch { /* empty */ }
+    }
+  }, []);
+
+  const results = useMemo(() => {
+    if (!query.trim()) return posts;
+    const q = query.toLowerCase();
+    return posts.filter((p) =>
+      p.data.title.toLowerCase().includes(q) ||
+      p.data.tags.some((tag) => tag.toLowerCase().includes(q)) ||
+      (p.data.description && p.data.description.toLowerCase().includes(q))
+    );
+  }, [query, posts]);
+
+  return (
+    <div>
+      <input
+        type="text"
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        placeholder={t.placeholder}
+        className="w-full px-4 py-2.5 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg)] text-[var(--color-text)] placeholder:text-[var(--color-text-muted)] focus:outline-none focus:border-[var(--color-accent)] focus:ring-1 focus:ring-[var(--color-accent)] transition-colors"
+      />
+      {query.trim() && (
+        <p className="text-sm text-[var(--color-text-muted)] mt-2">
+          {results.length > 0
+            ? `${results.length} ${lang === 'zh' ? '条结果' : 'results'}`
+            : t.noResults}
+        </p>
+      )}
+    </div>
+  );
+}
+import { useState } from 'react';
+
+interface TimelineItem {
+  date: string;
+  title: string;
+  description: string;
+  type: 'education' | 'research' | 'competition' | 'award' | 'other';
+}
+
+const typeConfig = {
+  education: { color: 'bg-accent', icon: '🎓' },
+  research: { color: 'bg-primary', icon: '🔬' },
+  competition: { color: 'bg-success', icon: '🏆' },
+  award: { color: 'bg-warning', icon: '🎖' },
+  other: { color: 'bg-text-muted', icon: '📌' },
+};
+
+const labels = {
+  zh: { showMore: '展开更多', showLess: '收起' },
+  en: { showMore: 'Show more', showLess: 'Show less' },
+};
+
+export default function Timeline({ items, lang }: { items: TimelineItem[]; lang: 'zh' | 'en' }) {
+  const [expanded, setExpanded] = useState(false);
+  const t = labels[lang];
+  const visible = expanded ? items : items.slice(0, 4);
+
+  return (
+    <div>
+      <div className="relative border-l-2 border-accent/30 ml-4 space-y-6">
+        {visible.map((item, i) => {
+          const config = typeConfig[item.type];
+          return (
+            <div key={i} className="relative pl-8 fade-in">
+              <div className={`absolute -left-2 top-1 w-4 h-4 rounded-full ${config.color} border-2 border-bg`} />
+              <div className="p-4 rounded-lg border border-border hover:border-accent/30 transition-all">
+                <div className="flex items-start gap-2 mb-1">
+                  <span className="text-lg">{config.icon}</span>
+                  <h3 className="font-semibold text-primary">{item.title}</h3>
+                </div>
+                <p className="text-sm text-text-muted mb-1">{item.date}</p>
+                <p className="text-sm text-text-secondary">{item.description}</p>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+      {items.length > 4 && (
+        <button
+          onClick={() => setExpanded(!expanded)}
+          className="mt-4 ml-12 text-sm text-accent hover:text-accent-light transition-colors"
+        >
+          {expanded ? t.showLess : t.showMore} ({items.length - 4} {lang === 'zh' ? '项' : 'items'})
+        </button>
+      )}
+    </div>
+  );
+}
+import { useState } from 'react';
+
+interface InteractiveResumeProps {
+  lang: 'zh' | 'en';
+}
+
+const sections = {
+  zh: [
+    { id: 'education', title: '教育经历', icon: '🎓' },
+    { id: 'research', title: '研究经历', icon: '🔬' },
+    { id: 'skills', title: '专业技能', icon: '💻' },
+    { id: 'awards', title: '获奖荣誉', icon: '🎖' },
+  ],
+  en: [
+    { id: 'education', title: 'Education', icon: '🎓' },
+    { id: 'research', title: 'Research', icon: '🔬' },
+    { id: 'skills', title: 'Skills', icon: '💻' },
+    { id: 'awards', title: 'Awards', icon: '🎖' },
+  ],
+};
+
+const labels = {
+  zh: { export: '导出 PDF', collapse: '全部收起', expand: '全部展开' },
+  en: { export: 'Export PDF', collapse: 'Collapse all', expand: 'Expand all' },
+};
+
+export default function InteractiveResume({ lang }: InteractiveResumeProps) {
+  const s = sections[lang];
+  const t = labels[lang];
+  const [collapsed, setCollapsed] = useState<Record<string, boolean>>({});
+
+  const toggle = (id: string) => {
+    setCollapsed((prev) => ({ ...prev, [id]: !prev[id] }));
+  };
+
+  const toggleAll = () => {
+    const allCollapsed = s.every((sec) => collapsed[sec.id]);
+    const newState: Record<string, boolean> = {};
+    s.forEach((sec) => { newState[sec.id] = !allCollapsed; });
+    setCollapsed(newState);
+  };
+
+  const exportPdf = () => {
+    // Expand all sections before printing
+    const newState: Record<string, boolean> = {};
+    s.forEach((sec) => { newState[sec.id] = false; });
+    setCollapsed(newState);
+    setTimeout(() => window.print(), 200);
+  };
+
+  return (
+    <div>
+      <div className="flex gap-2 mb-6">
+        <button
+          onClick={exportPdf}
+          className="px-4 py-2 text-sm rounded-lg bg-primary text-white hover:bg-primary-light transition-colors"
+        >
+          📄 {t.export}
+        </button>
+        <button
+          onClick={toggleAll}
+          className="px-4 py-2 text-sm rounded-lg border border-border text-text-secondary hover:bg-bg-tertiary transition-colors"
+        >
+          {s.every((sec) => collapsed[sec.id]) ? t.expand : t.collapse}
+        </button>
+      </div>
+
+      <div className="space-y-4">
+        {s.map((sec) => (
+          <div key={sec.id} className="border border-border rounded-lg overflow-hidden">
+            <button
+              onClick={() => toggle(sec.id)}
+              className="w-full flex items-center justify-between p-4 hover:bg-bg-secondary transition-colors text-left"
+            >
+              <span className="flex items-center gap-2">
+                <span>{sec.icon}</span>
+                <span className="font-semibold text-primary">{sec.title}</span>
+              </span>
+              <span className={`text-text-muted transition-transform ${collapsed[sec.id] ? '' : 'rotate-180'}`}>
+                ▼
+              </span>
+            </button>
+            <div className={`transition-all ${collapsed[sec.id] ? 'max-h-0 overflow-hidden' : 'max-h-[2000px]'}`}>
+              <div className="p-4 pt-0" id={`resume-${sec.id}`}>
+                {/* Content is rendered by Astro slot */}
+                <slot name={sec.id} />
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+import rss from '@astrojs/rss';
+import { getCollection } from 'astro:content';
+import { siteConfig } from '../data/site';
+
+export async function GET(context: any) {
+  const posts = await getCollection('posts', ({ data }) => !data.draft);
+  const sorted = posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+  return rss({
+    title: siteConfig.title,
+    description: siteConfig.description.en,
+    site: context.site,
+    items: sorted.map((post) => ({
+      title: post.data.title,
+      pubDate: post.data.date,
+      description: post.data.description || '',
+      link: `/${post.data.lang}/blog/${post.id.split('/').slice(1).join('/')}/`,
+    })),
+    customData: `<language>zh-cn</language>`,
+  });
+}
