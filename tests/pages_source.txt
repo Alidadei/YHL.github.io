@@ -1,0 +1,629 @@
+=== INDEX ===
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { siteConfig, type Lang } from '../../data/site';
+import { getUI } from '../../i18n/ui';
+import { getLangFromUrl } from '../../lib/i18n';
+import { getCollection } from 'astro:content';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'zh' } }, { params: { lang: 'en' } }];
+}
+
+const { lang } = Astro.params as { lang: Lang };
+const t = getUI.bind(null, lang as Lang);
+const author = siteConfig.author;
+
+// Get recent posts
+const allPosts = await getCollection('posts', ({ data }) => data.lang === lang && !data.draft);
+const recentPosts = allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime()).slice(0, 3);
+
+// Get featured projects
+const allProjects = await getCollection('projects', ({ data }) => data.lang === lang && data.featured);
+---
+
+<PageLayout title={lang === 'zh' ? '首页' : 'Home'}>
+  <!-- Hero Section -->
+  <section class="text-center py-16 sm:py-24">
+    <p class="text-accent text-lg mb-2">{t('hero.greeting')}</p>
+    <h1 class="text-4xl sm:text-5xl font-bold text-primary mb-4">
+      {author.name}
+    </h1>
+    <p class="text-xl text-text-secondary mb-6 max-w-2xl mx-auto">
+      {t('hero.role')}
+    </p>
+    <div class="flex flex-wrap justify-center gap-2 mb-8">
+      {author.researchInterests.map((interest) => (
+        <span class="px-3 py-1.5 text-sm rounded-full bg-accent/10 text-accent border border-accent/20">
+          {interest}
+        </span>
+      ))}
+    </div>
+    <div class="flex justify-center gap-4">
+      <a
+        href={`/${lang}/about/`}
+        class="px-6 py-2.5 bg-primary text-white rounded-lg hover:bg-primary-light transition-colors"
+      >
+        {t('nav.about')}
+      </a>
+      <a
+        href={`/${lang}/cv/`}
+        class="px-6 py-2.5 border border-primary text-primary rounded-lg hover:bg-primary hover:text-white transition-colors"
+      >
+        {t('nav.cv')}
+      </a>
+    </div>
+  </section>
+
+  <!-- Recent Posts -->
+  {recentPosts.length > 0 && (
+    <section class="py-12 border-t border-border">
+      <div class="flex items-center justify-between mb-8">
+        <h2 class="text-2xl font-bold text-primary">{t('nav.blog')}</h2>
+        <a href={`/${lang}/blog/`} class="text-accent hover:text-accent-light text-sm">
+          {t('blog.allPosts')} &rarr;
+        </a>
+      </div>
+      <div class="grid gap-6 md:grid-cols-3">
+        {recentPosts.map((post) => (
+          <a
+            href={`/${lang}/blog/${post.id}/`}
+            class="block p-6 rounded-lg border border-border hover:border-accent/50 hover:shadow-sm transition-all"
+          >
+            <h3 class="font-semibold text-primary mb-2 line-clamp-2">{post.data.title}</h3>
+            {post.data.description && (
+              <p class="text-sm text-text-muted line-clamp-2">{post.data.description}</p>
+            )}
+            <time class="text-xs text-text-muted mt-3 block">
+              {post.data.date.toLocaleDateString(lang === 'zh' ? 'zh-CN' : 'en-US', {
+                year: 'numeric', month: 'short', day: 'numeric'
+              })}
+            </time>
+          </a>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <!-- Featured Projects -->
+  {allProjects.length > 0 && (
+    <section class="py-12 border-t border-border">
+      <div class="flex items-center justify-between mb-8">
+        <h2 class="text-2xl font-bold text-primary">{t('nav.projects')}</h2>
+        <a href={`/${lang}/projects/`} class="text-accent hover:text-accent-light text-sm">
+          {t('projects.viewAll')} &rarr;
+        </a>
+      </div>
+      <div class="grid gap-6 md:grid-cols-2">
+        {allProjects.map((project) => (
+          <div class="p-6 rounded-lg border border-border hover:border-accent/50 hover:shadow-sm transition-all">
+            <h3 class="font-semibold text-primary mb-2">{project.data.title}</h3>
+            <p class="text-sm text-text-muted mb-4">{project.data.description}</p>
+            <div class="flex gap-3">
+              {project.data.github && (
+                <a href={project.data.github} target="_blank" rel="noopener noreferrer" class="text-sm text-accent hover:text-accent-light">
+                  {t('projects.github')} &rarr;
+                </a>
+              )}
+              {project.data.demo && (
+                <a href={project.data.demo} target="_blank" rel="noopener noreferrer" class="text-sm text-accent hover:text-accent-light">
+                  {t('projects.demo')} &rarr;
+                </a>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
+</PageLayout>
+=== ABOUT ===
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { type Lang } from '../../data/site';
+import { getUI } from '../../i18n/ui';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'zh' } }, { params: { lang: 'en' } }];
+}
+
+const { lang } = Astro.params as { lang: Lang };
+const t = getUI.bind(null, lang as Lang);
+---
+
+<PageLayout title={lang === 'zh' ? '关于我' : 'About'}>
+  <div class="space-y-8">
+    <!-- Introduction -->
+    <section class="prose prose-lg max-w-none">
+      {lang === 'zh' ? (
+        <>
+          <p>我是中国海洋大学电子工程专业大四学生，已获得推免资格并被<strong>复旦大学医学人工智能博士项目</strong>直博录取。</p>
+          <p>我的<strong>研究兴趣</strong>包括深度强化学习、大语言模型、智能决策和人机交互。<strong>我期望在未来的科研生涯中为 AGI 的到来贡献自己的力量！</strong></p>
+        </>
+      ) : (
+        <>
+          <p>I am currently a senior student in Ocean University of China who <strong>has obtained the qualification for recommended postgraduate admission</strong> and has been <strong>directly admitted to the Ph.D. of Medical Artificial Intelligence at Fudan University</strong>.</p>
+          <p>My major during the undergraduate study is Electronic Engineering and my <strong>research interest</strong> includes Deep Reinforcement Learning, LLM, Intelligent Decision Making, and Human-Computer Interaction. <strong>I aspire to contribute to the arrival of AGI in my future research life!</strong></p>
+        </>
+      )}
+    </section>
+
+    <!-- Academic Background -->
+    <section>
+      <h2 class="text-2xl font-bold text-primary mb-4">{lang === 'zh' ? '学业成绩' : 'Academic Background'}</h2>
+      <div class="space-y-3">
+        <p><span class="underline">{lang === 'zh' ? '综合绩点' : 'Overall grade'}</span>: 93.97</p>
+        <p><span class="underline">{lang === 'zh' ? '排名' : 'Ranking'}</span>: <strong>top 3.6%</strong> (4/113)</p>
+      </div>
+      <div class="text-center mt-4">
+        <img src="/images/mygrade.png" alt="Grades" class="mx-auto rounded-lg shadow-sm" />
+        <p class="text-sm text-text-muted mt-2">
+          {lang === 'zh'
+            ? '▲ 三年来学业成绩持续提升！不断进步，从不后退！'
+            : '▲ Over the past three years, my academic performance has been continuously improving!'}
+        </p>
+      </div>
+    </section>
+
+    <!-- Honors -->
+    <section>
+      <h2 class="text-2xl font-bold text-primary mb-4">{lang === 'zh' ? '荣誉奖项' : 'Honors'}</h2>
+      <p class="mb-4">{lang === 'zh' ? '二等奖学金、优秀学生称号' : 'The Second-Class Scholarship, title of Outstanding Student'}</p>
+      <div class="grid grid-cols-2 gap-4">
+        <img src="/images/二等奖学金.jpg" alt="Scholarship" class="w-full rounded-lg shadow-sm" />
+        <img src="/images/优秀学生.jpg" alt="Outstanding Student" class="w-full rounded-lg shadow-sm" />
+      </div>
+      <p class="text-sm text-text-muted text-center mt-2">{lang === 'zh' ? '获得的荣誉和奖项' : 'Honors and awards I\'ve got.'}</p>
+    </section>
+
+    <!-- English -->
+    <section>
+      <h2 class="text-2xl font-bold text-primary mb-4">{lang === 'zh' ? '英语能力' : 'English'}</h2>
+      <p><strong>CET-4: 657; CET-6: 622</strong></p>
+    </section>
+
+    <!-- Competitions -->
+    <section>
+      <h2 class="text-2xl font-bold text-primary mb-4">{lang === 'zh' ? '竞赛经历' : 'Competitions'}</h2>
+      <p class="mb-4">
+        {lang === 'zh'
+          ? '我参加了大量竞赛，全面提升了专业技能和团队协作能力：'
+          : 'I have also participated in numerous competitions, which have comprehensively improved my professional and collaborative skills:'}
+      </p>
+      <div class="grid grid-cols-2 gap-4">
+        <img src="/images/第四届国际海洋工程准备科技创新大赛.jpg" alt="Competition 1" class="w-full rounded-lg shadow-sm" />
+        <img src="/images/第五届海工.jpg" alt="Competition 2" class="w-full rounded-lg shadow-sm" />
+        <img src="/images/山东省机器人大赛三等奖.jpg" alt="Competition 3" class="w-full rounded-lg shadow-sm" />
+        <img src="/images/第十四届蓝桥杯电子赛省奖.jpg" alt="Competition 4" class="w-full rounded-lg shadow-sm" />
+      </div>
+      <p class="text-center text-text-muted mt-2">{lang === 'zh' ? '等等……' : 'and so on ......'}</p>
+    </section>
+
+    <!-- Social Practice -->
+    <section>
+      <h2 class="text-2xl font-bold text-primary mb-4">{lang === 'zh' ? '社会实践' : 'Social Practice'}</h2>
+      <p class="mb-4">
+        {lang === 'zh'
+          ? '此外，我参与了许多社会实践活动，大大提升了时间管理和组织能力。'
+          : 'Besides, I\'ve taken part in many social practice activities. These activities have significantly strengthened my time management and organizational capabilities.'}
+      </p>
+      <div class="text-center">
+        <img src="/images/华为HSD证书.jpg" alt="Huawei HSD Certificate" class="mx-auto max-w-xs rounded-lg shadow-sm" />
+      </div>
+    </section>
+
+    <!-- Other -->
+    <section>
+      <h2 class="text-2xl font-bold text-primary mb-4">{lang === 'zh' ? '其他' : 'Other Aspects'}</h2>
+      <p class="mb-2">
+        {lang === 'zh'
+          ? '学业之外，我有多种爱好，如慢跑与乒乓球、拉小提琴和练习书法，它们是我学习生活的调味品。'
+          : 'Outside of academics, I have a variety of hobbies, such as jogging & table tennis, playing the violin and practicing calligraphy, they are the spices of my study life.'}
+      </p>
+      <p>
+        {lang === 'zh'
+          ? '编程方面，我熟练使用 C、MATLAB、Python 和 Verilog，这些都是我研究领域的重要工具。'
+          : 'In terms of programming skills, I am experienced in using C, MATLAB, Python, and Verilog, which are all essential tools in my research field.'}
+      </p>
+    </section>
+
+    <!-- News -->
+    <section>
+      <h2 class="text-2xl font-bold text-primary mb-4">News</h2>
+      <div class="border-t border-border pt-4 space-y-2">
+        <p><span class="text-red-700 font-bold">news!</span> 26/09/2024. {lang === 'zh'
+          ? '我已被**复旦大学医学人工智能博士项目直博录取**！'
+          : 'I have been **directly admitted to the Ph.D. of Medical Artificial Intelligence at Fudan University**!'}</p>
+        <p><span class="text-red-700 font-bold">news!</span> 08/2024. {lang === 'zh'
+          ? '我通过口头答辩获得了院系额外加分认可。'
+          : 'I won an extra point bonus recognition of my department through oral defense.'}</p>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section>
+      <h2 class="text-2xl font-bold text-primary mb-4">{lang === 'zh' ? '联系我' : 'Contact'}</h2>
+      <div class="space-y-2">
+        <p>{lang === 'zh' ? '邮箱' : 'Email'}: yuhl@stu.ouc.edu.cn / 13427917163@163.com</p>
+        <p>{lang === 'zh' ? '微信' : 'WeChat'}: yhl2765428788</p>
+        <img src="/images/个人微信.png" alt="WeChat QR" class="max-w-xs rounded-lg" />
+      </div>
+    </section>
+  </div>
+</PageLayout>
+=== CV ===
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { type Lang } from '../../data/site';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'zh' } }, { params: { lang: 'en' } }];
+}
+
+const { lang } = Astro.params as { lang: Lang };
+---
+
+<PageLayout title="CV">
+  <div class="space-y-10">
+    <!-- Education -->
+    <section>
+      <h2 class="text-2xl font-bold text-primary mb-6 pb-2 border-b-2 border-primary">
+        {lang === 'zh' ? '教育经历' : 'Educational Experience'}
+      </h2>
+      <div class="space-y-4">
+        <div class="border-l-4 border-accent pl-4">
+          <h3 class="font-bold text-lg text-primary">2015-2018</h3>
+          <p>{lang === 'zh' ? '深圳外国语学校初中部 · 宣传委员' : 'Junior High School of Shenzhen Foreign Language School — Publicity Member'}</p>
+        </div>
+        <div class="border-l-4 border-accent pl-4">
+          <h3 class="font-bold text-lg text-primary">2018-2021</h3>
+          <p>{lang === 'zh' ? '深圳外国语学校高中部 · 宣传委员' : 'Senior High School of Shenzhen Foreign Language School — Publicity Committee Member'}</p>
+        </div>
+        <div class="border-l-4 border-accent pl-4">
+          <h3 class="font-bold text-lg text-primary">2021-present</h3>
+          <p>{lang === 'zh' ? '中国海洋大学 · 电子工程学院 · 书法协会干事、自强社志愿者' : 'Ocean University of China — School Calligraphy Association Officer, Self-improvement Club Volunteer'}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Research -->
+    <section>
+      <h2 class="text-2xl font-bold text-primary mb-6 pb-2 border-b-2 border-primary">
+        {lang === 'zh' ? '研究经历' : 'Research Experience'}
+      </h2>
+      <div class="space-y-8">
+        <div class="border-l-4 border-accent pl-4">
+          <div class="flex items-baseline justify-between flex-wrap gap-2">
+            <h3 class="font-bold text-lg text-primary">
+              {lang === 'zh' ? '校级大创：基于 STM32 的智能桌面系统' : 'School-level Innovation: Intelligent Desktop System Based on STM32'}
+            </h3>
+            <span class="text-sm text-text-muted">{lang === 'zh' ? '负责人' : 'Project Leader'}</span>
+          </div>
+          <p class="text-sm text-text-muted mb-2">2022.11 - 2023.11</p>
+          {lang === 'zh' ? (
+            <p class="text-text-secondary">大二学年，我<strong>主持了</strong>一项名为"基于 STM32 的智能桌面系统"的校级大创。该项目旨在针对现代人的学习办公需求和健康问题设计一种<strong>多功能人机交互书桌系统</strong>。总体上，我负责了整个项目的立项、中期答辩和结项总结。硬件上，选取了STM32F407主控、LD3320语音识别芯片和TFTLCD电阻触控屏进行开发。软件上，我用Keil C编写了整体的代码控制框架，<strong>利用哈希思想和函数指针优化了系统语音控制的轮询过程</strong>，大大降低了代码的时间复杂度。最终实物测试所有功能达到预期。</p>
+          ) : (
+            <p class="text-text-secondary">During my sophomore year, I <strong>led</strong> a school-level innovation project aimed at designing a <strong>multifunctional human-computer interaction desk system</strong>. I was responsible for project initiation, mid-term defense, final summary, and development coordination. On the hardware side, we selected the STM32F407 main controller, LD3320 voice recognition chip, and TFTLCD resistive touch screen. On the software side, I wrote the control framework using Keil C and <strong>employed hash thinking and function pointers to optimize the voice control polling process</strong>, significantly reducing time complexity. All functions met expectations in physical testing.</p>
+          )}
+        </div>
+
+        <div class="border-l-4 border-accent pl-4">
+          <div class="flex items-baseline justify-between flex-wrap gap-2">
+            <h3 class="font-bold text-lg text-primary">
+              {lang === 'zh' ? '"智能自主系统"课题组实习' : '"Intelligent Autonomous Systems" Research Group Internship'}
+            </h3>
+            <span class="text-sm text-text-muted">{lang === 'zh' ? '核心成员' : 'Core Member'}</span>
+          </div>
+          <p class="text-sm text-text-muted mb-2">2023.8 - 2024.8</p>
+          {lang === 'zh' ? (
+            <p class="text-text-secondary">大三伊始，我怀着对强化学习和大语言模型的研究兴趣，主动联系了本校李光亮老师并加入了他的<strong>"智能自主系统"</strong>课题组。参与了有关<strong>"结合大语言模型和强化学习的机器人学习方法"</strong>文献调研，已初步形成了一篇综述文章。同时参与了<strong>"基于大语言模型的社交机器人Haru的自主行为学习方法"</strong>的科研项目，完成了ubuntu系统ROS实验环境的装配，并在gazebo平台上进行了仿真实验。</p>
+          ) : (
+            <p class="text-text-secondary">Driven by a research interest in RL and LLMs, I joined the <strong>"Intelligent Autonomous Systems"</strong> research group. I engaged in literature research on <strong>"Robot Learning Methods Combining LLMs and RL"</strong>, leading to a preliminary review article. Concurrently, I participated in the project on <strong>"Autonomous Behavioral Learning Methods for Social Robot Haru Based on LLMs"</strong>, setting up the ROS experimental environment on Ubuntu and conducting simulation experiments on the Gazebo platform.</p>
+          )}
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section>
+      <h2 class="text-2xl font-bold text-primary mb-6 pb-2 border-b-2 border-primary">
+        {lang === 'zh' ? '技能' : 'Skills'}
+      </h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div>
+          <h3 class="font-semibold text-primary mb-2">{lang === 'zh' ? '编程技能' : 'Programming'}</h3>
+          <p class="text-text-secondary text-sm">C, C++, Matlab, Python, Verilog</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-primary mb-2">{lang === 'zh' ? '科研技能' : 'Research'}</h3>
+          <p class="text-text-secondary text-sm">
+            {lang === 'zh'
+              ? 'LaTeX 论文写作、文献调研、Gazebo/Simulink 仿真'
+              : 'LaTeX writing, literature research, Gazebo/Simulink simulation'}
+          </p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-primary mb-2">{lang === 'zh' ? '通用技能' : 'General'}</h3>
+          <p class="text-text-secondary text-sm">
+            {lang === 'zh'
+              ? '团队协作、表达能力、Office 办公'
+              : 'Teamwork, presentation, Office proficiency'}
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
+</PageLayout>
+=== CONTACT ===
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { type Lang, siteConfig } from '../../data/site';
+import { getUI } from '../../i18n/ui';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'zh' } }, { params: { lang: 'en' } }];
+}
+
+const { lang } = Astro.params as { lang: Lang };
+const t = getUI.bind(null, lang as Lang);
+---
+
+<PageLayout title={t('nav.contact')}>
+  <h1 class="text-3xl font-bold text-primary mb-8">{t('nav.contact')}</h1>
+
+  <div class="max-w-lg space-y-6">
+    <p class="text-text-secondary">
+      {lang === 'zh'
+        ? '欢迎通过以下方式联系我：'
+        : 'Feel free to reach out through the following:'}
+    </p>
+
+    <div class="space-y-3">
+      <div class="flex items-center gap-3 p-4 rounded-lg border border-border">
+        <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+        <div>
+          <p class="text-sm text-text-muted">Email</p>
+          <a href={`mailto:${siteConfig.author.email}`} class="text-accent hover:text-accent-light">
+            {siteConfig.author.email}
+          </a>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-3 p-4 rounded-lg border border-border">
+        <svg class="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+        </svg>
+        <div>
+          <p class="text-sm text-text-muted">GitHub</p>
+          <a href={`https://github.com/${siteConfig.author.github}`} target="_blank" rel="noopener noreferrer" class="text-accent hover:text-accent-light">
+            @{siteConfig.author.github}
+          </a>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-3 p-4 rounded-lg border border-border">
+        <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+        <div>
+          <p class="text-sm text-text-muted">{lang === 'zh' ? '位置' : 'Location'}</p>
+          <p class="text-text-secondary">{siteConfig.author.location}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</PageLayout>
+=== PUBLICATIONS ===
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { type Lang } from '../../data/site';
+import { getCollection } from 'astro:content';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'zh' } }, { params: { lang: 'en' } }];
+}
+
+const { lang } = Astro.params as { lang: Lang };
+
+const allPubs = await getCollection('publications');
+const pubs = allPubs.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+// Group by category
+const categories: Record<string, string> = {
+  manuscripts: lang === 'zh' ? '期刊论文' : 'Journal Articles',
+  conferences: lang === 'zh' ? '会议论文' : 'Conference Papers',
+  books: lang === 'zh' ? '书籍' : 'Books',
+};
+
+const grouped = Object.entries(categories).map(([key, label]) => ({
+  key,
+  label,
+  items: pubs.filter((p) => p.data.category === key),
+})).filter((g) => g.items.length > 0);
+---
+
+<PageLayout title={lang === 'zh' ? '论文发表' : 'Publications'}>
+  <h1 class="text-3xl font-bold text-primary mb-8">{lang === 'zh' ? '论文发表' : 'Publications'}</h1>
+
+  {grouped.length === 0 ? (
+    <p class="text-text-muted">{lang === 'zh' ? '暂无论文' : 'No publications yet.'}</p>
+  ) : (
+    <div class="space-y-10">
+      {grouped.map((group) => (
+        <section>
+          <h2 class="text-xl font-bold text-primary mb-4">{group.label}</h2>
+          <div class="space-y-4">
+            {group.items.map((pub) => (
+              <div class="p-5 rounded-lg border border-border hover:border-accent/30 transition-all">
+                <h3 class="font-semibold text-primary mb-1">{pub.data.title}</h3>
+                {pub.data.venue && (
+                  <p class="text-sm text-accent mb-2">{pub.data.venue}</p>
+                )}
+                {pub.data.excerpt && (
+                  <p class="text-text-muted text-sm mb-3">{pub.data.excerpt}</p>
+                )}
+                <div class="flex gap-4 text-sm">
+                  {pub.data.paperurl && (
+                    <a href={pub.data.paperurl} target="_blank" rel="noopener noreferrer" class="text-accent hover:text-accent-light">
+                      {lang === 'zh' ? '论文 PDF' : 'Paper PDF'} &darr;
+                    </a>
+                  )}
+                  {pub.data.slidesurl && (
+                    <a href={pub.data.slidesurl} target="_blank" rel="noopener noreferrer" class="text-accent hover:text-accent-light">
+                      {lang === 'zh' ? 'Slides' : 'Slides'} &darr;
+                    </a>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
+  )}
+</PageLayout>
+=== TALKS ===
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { type Lang } from '../../data/site';
+import { getCollection } from 'astro:content';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'zh' } }, { params: { lang: 'en' } }];
+}
+
+const { lang } = Astro.params as { lang: Lang };
+
+const allTalks = await getCollection('talks');
+const talks = allTalks.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+
+<PageLayout title={lang === 'zh' ? '演讲与报告' : 'Talks'}>
+  <h1 class="text-3xl font-bold text-primary mb-8">{lang === 'zh' ? '演讲与报告' : 'Talks & Presentations'}</h1>
+
+  {talks.length === 0 ? (
+    <p class="text-text-muted">{lang === 'zh' ? '暂无演讲' : 'No talks yet.'}</p>
+  ) : (
+    <div class="relative border-l-2 border-accent/30 ml-4 space-y-8">
+      {talks.map((talk) => (
+        <div class="relative pl-8">
+          <div class="absolute -left-2 top-1 w-4 h-4 rounded-full bg-accent border-2 border-bg"></div>
+          <div class="p-5 rounded-lg border border-border hover:border-accent/30 transition-all">
+            <div class="flex items-start justify-between flex-wrap gap-2 mb-2">
+              <h3 class="font-semibold text-primary">{talk.data.title}</h3>
+              <span class="px-2 py-0.5 text-xs rounded bg-accent/10 text-accent">{talk.data.type}</span>
+            </div>
+            <div class="flex flex-wrap gap-x-4 gap-y-1 text-sm text-text-muted">
+              {talk.data.venue && <span>{talk.data.venue}</span>}
+              {talk.data.location && <span>{talk.data.location}</span>}
+              <time>{talk.data.date.toLocaleDateString(lang === 'zh' ? 'zh-CN' : 'en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+            </div>
+            {talk.data.talkurl && (
+              <a href={talk.data.talkurl} target="_blank" rel="noopener noreferrer" class="text-sm text-accent hover:text-accent-light mt-2 inline-block">
+                {lang === 'zh' ? '查看详情' : 'View details'} &rarr;
+              </a>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  )}
+</PageLayout>
+=== BLOG INDEX ===
+---
+import PageLayout from '../../../layouts/PageLayout.astro';
+import { type Lang } from '../../../data/site';
+import { getUI } from '../../../i18n/ui';
+import { getCollection } from 'astro:content';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'zh' } }, { params: { lang: 'en' } }];
+}
+
+const { lang } = Astro.params as { lang: Lang };
+const t = getUI.bind(null, lang as Lang);
+
+const allPosts = await getCollection('posts', ({ data }) => data.lang === lang && !data.draft);
+const posts = allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+// Get all unique tags
+const allTags = [...new Set(posts.flatMap((p) => p.data.tags))].sort();
+---
+
+<PageLayout title={t('nav.blog')}>
+  <h1 class="text-3xl font-bold text-primary mb-8">{t('nav.blog')}</h1>
+
+  {allTags.length > 0 && (
+    <div class="flex flex-wrap gap-2 mb-8">
+      {allTags.map((tag) => (
+        <span class="px-3 py-1 text-sm rounded-full bg-bg-tertiary text-text-secondary hover:bg-accent/10 hover:text-accent cursor-pointer transition-colors">
+          {tag}
+        </span>
+      ))}
+    </div>
+  )}
+
+  {posts.length === 0 ? (
+    <p class="text-text-muted">{lang === 'zh' ? '暂无文章' : 'No posts yet.'}</p>
+  ) : (
+    <div class="space-y-6">
+      {posts.map((post) => (
+        <a
+          href={`/${lang}/blog/${post.id}/`}
+          class="block p-6 rounded-lg border border-border hover:border-accent/50 hover:shadow-sm transition-all group"
+        >
+          <h2 class="text-xl font-semibold text-primary group-hover:text-accent transition-colors mb-2">
+            {post.data.title}
+          </h2>
+          {post.data.description && (
+            <p class="text-text-muted text-sm mb-3">{post.data.description}</p>
+          )}
+          <div class="flex items-center justify-between">
+            <time class="text-xs text-text-muted">
+              {post.data.date.toLocaleDateString(lang === 'zh' ? 'zh-CN' : 'en-US', {
+                year: 'numeric', month: 'long', day: 'numeric'
+              })}
+            </time>
+            {post.data.tags.length > 0 && (
+              <div class="flex gap-1">
+                {post.data.tags.slice(0, 3).map((tag) => (
+                  <span class="px-2 py-0.5 text-xs rounded bg-bg-tertiary text-text-muted">{tag}</span>
+                ))}
+              </div>
+            )}
+          </div>
+        </a>
+      ))}
+    </div>
+  )}
+</PageLayout>
+=== BLOG SLUG ===
+---
+import PostLayout from '../../../layouts/PostLayout.astro';
+import { type Lang } from '../../../data/site';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  return posts.map((post) => {
+    // post.id is like "zh/data-structure", extract the slug part
+    const parts = post.id.split('/');
+    const lang = parts[0] as Lang;
+    const slug = parts.slice(1).join('/');
+    return {
+      params: { lang, slug },
+      props: { post },
+    };
+  });
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<PostLayout title={post.data.title} date={post.data.date} tags={post.data.tags} description={post.data.description}>
+  <Content />
+</PostLayout>
