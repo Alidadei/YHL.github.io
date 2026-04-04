@@ -174,15 +174,15 @@ export default function SunArc({ lang }: SunArcProps) {
     : (h < 6 ? 'Good Night' : h < 12 ? 'Good Morning' : h < 18 ? 'Good Afternoon' : 'Good Evening');
 
   return (
-    <div className="relative w-full" style={{ height: '200px', marginLeft: 'calc(-50vw + 50%)', marginRight: 'calc(-50vw + 50%)' }}>
-      {/* Sky layer */}
+    <>
+      {/* Fixed sky background behind navbar */}
       <div
-        className="absolute inset-0"
-        style={{
-          background: skyGradient,
-          transition: 'background 2s ease',
-        }}
+        className="fixed top-0 left-0 right-0 pointer-events-none"
+        style={{ height: '280px', background: skyGradient, transition: 'background 2s ease', zIndex: 0 }}
       />
+
+      {/* Content spacer */}
+      <div style={{ height: '200px', marginLeft: 'calc(-50vw + 50%)', marginRight: 'calc(-50vw + 50%)' }} className="relative">
 
       {/* Stars at night */}
       {(isNight || (isDusk && brightness < 0.1) || (isDawn && brightness < 0.1)) && (
