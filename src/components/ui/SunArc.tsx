@@ -19,10 +19,6 @@ const wuxingColor: Record<string, string> = {
   '壬': '#2874a6', '癸': '#2874a6', '亥': '#2874a6', '子': '#2874a6',
 };
 
-function getWuxingColor(char: string): string {
-  return wuxingColor[char] || 'inherit';
-}
-
 function LunarDate({ lang }: { lang: 'zh' | 'en' }) {
   const [now, setNow] = useState(() => new Date());
   const [displayed, setDisplayed] = useState('');
@@ -121,67 +117,90 @@ export default function SunArc({ lang }: SunArcProps) {
 
   const arcHeight = Math.sin(progress * Math.PI);
   const sunX = 8 + progress * 84;
-  const sunY = 90 - arcHeight * 75;
   const altitude = isDay ? arcHeight : 0;
 
-  // Sky gradient
-  const skyGradient = (() => {
-    if (isDay) {
-      if (altitude > 0.6) return 'linear-gradient(180deg, rgba(135,195,235,0.35) 0%, rgba(200,220,240,0.2) 50%, rgba(250,246,240,0) 100%)';
-      if (altitude > 0.2) return 'linear-gradient(180deg, rgba(232,168,100,0.35) 0%, rgba(220,180,140,0.2) 50%, rgba(250,246,240,0) 100%)';
-      return 'linear-gradient(180deg, rgba(210,120,60,0.4) 0%, rgba(200,140,80,0.25) 50%, rgba(250,246,240,0) 100%)';
-    }
+  // Continuous brightness factor: 0=midnight, 1=noon peak
+  const brightness = (() => {
+    if (isDay) return 0.25 + 0.75 * arcHeight; // 0.25→1.0
     if (isDusk) {
       const f = (h - sunSet) / (20 - sunSet);
-      return `linear-gradient(180deg, rgba(60,40,80,${0.3*(1-f)}) 0%, rgba(40,30,60,${0.15*(1-f)}) 50%, rgba(250,246,240,0) 100%)`;
+      return 0.25 * (1 - f);
     }
     if (isDawn) {
       const f = (h - 4.5) / (sunRise - 4.5);
-      return `linear-gradient(180deg, rgba(210,120,60,${0.3*f}) 0%, rgba(200,140,80,${0.15*f}) 50%, rgba(250,246,240,0) 100%)`;
+      return 0.25 * f;
     }
-    return 'linear-gradient(180deg, rgba(15,15,40,0.25) 0%, rgba(20,20,50,0.1) 50%, rgba(250,246,240,0) 100%)';
+    return 0;
   })();
 
-  // Sun glow
-  const sunCore = altitude > 0.5 ? '#fff5d0' : altitude > 0.2 ? '#ffd080' : '#ff8030';
-  const glowColor = altitude > 0.5 ? 'rgba(255,240,180,0.25)' : 'rgba(255,140,40,0.2)';
+  // Sky gradient — scales with brightness
+  const skyGradient = (() => {
+    if (isDay) {
+      // High sun: bright blue; mid: warm blue; low: orange
+      if (altitude > 0.6) {
+        const a = 0.3 + 0.5 * altitude;
+        return `linear-gradient(180deg, rgba(100,170,230,${a}) 0%, rgba(160,200,240,${a*0.6}) 40%, rgba(220,230,245,${a*0.25}) 70%, rgba(250,246,240,0) 100%)`;
+      }
+      if (altitude > 0.2) {
+        const a = 0.25 + 0.4 * altitude;
+        return `linear-gradient(180deg, rgba(220,155,80,${a}) 0%, rgba(210,175,130,${a*0.6}) 40%, rgba(240,220,195,${a*0.25}) 70%, rgba(250,246,240,0) 100%)`;
+      }
+      const a = 0.3 + 0.3 * (altitude / 0.2);
+      return `linear-gradient(180deg, rgba(200,100,40,${a}) 0%, rgba(195,130,70,${a*0.7}) 35%, rgba(230,190,140,${a*0.3}) 65%, rgba(250,246,240,0) 100%)`;
+    }
+    if (isDusk) {
+      const f = (h - sunSet) / (20 - sunSet);
+      return `linear-gradient(180deg, rgba(50,30,70,${0.35*(1-f)}) 0%, rgba(80,40,60,${0.2*(1-f)}) 40%, rgba(150,80,50,${0.1*(1-f)}) 70%, rgba(250,246,240,0) 100%)`;
+    }
+    if (isDawn) {
+      const f = (h - 4.5) / (sunRise - 4.5);
+      return `linear-gradient(180deg, rgba(200,100,40,${0.3*f}) 0%, rgba(190,120,70,${0.2*f}) 40%, rgba(230,180,130,${0.1*f}) 70%, rgba(250,246,240,0) 100%)`;
+    }
+    return `linear-gradient(180deg, rgba(10,10,35,0.35) 0%, rgba(15,15,45,0.2) 40%, rgba(20,20,50,0.08) 70%, rgba(250,246,240,0) 100%)`;
+  })();
+
+  // Sun Y position — larger canvas means sun can go higher
+  const sunY = 65 - altitude * 55; // range: 65% (horizon) → 10% (noon peak)
+
+  // Sun appearance
+  const sunCore = altitude > 0.5 ? '#fff8e0' : altitude > 0.2 ? '#ffd080' : '#ff8030';
+  const glowSize = 60 + 40 * altitude;
+  const glowColor = altitude > 0.5
+    ? `rgba(255,240,180,${0.15 + 0.2 * altitude})`
+    : `rgba(255,140,40,${0.1 + 0.15 * altitude})`;
 
   const greeting = lang === 'zh'
     ? (h < 6 ? '夜深了' : h < 12 ? '早上好' : h < 18 ? '下午好' : '晚上好')
     : (h < 6 ? 'Good Night' : h < 12 ? 'Good Morning' : h < 18 ? 'Good Afternoon' : 'Good Evening');
 
   return (
-    <div className="relative w-full" style={{ height: '160px' }}>
-      {/* Blurred sky layer */}
+    <div className="relative w-full" style={{ height: '340px' }}>
+      {/* Sky layer */}
       <div
         className="absolute inset-0"
         style={{
           background: skyGradient,
-          filter: 'blur(8px)',
-          WebkitFilter: 'blur(8px)',
-          opacity: 0.7,
-          maskImage: 'linear-gradient(to bottom, black 40%, transparent 100%)',
-          WebkitMaskImage: 'linear-gradient(to bottom, black 40%, transparent 100%)',
+          transition: 'background 2s ease',
         }}
       />
 
       {/* Stars at night */}
-      {(isNight || isDusk || isDawn) && (
-        <div className="absolute inset-0" style={{ opacity: isNight ? 0.5 : 0.2 }}>
-          {Array.from({ length: 12 }).map((_, i) => {
+      {(isNight || (isDusk && brightness < 0.1) || (isDawn && brightness < 0.1)) && (
+        <div className="absolute inset-0" style={{ opacity: isNight ? 0.6 : 0.25 }}>
+          {Array.from({ length: 24 }).map((_, i) => {
             const seed = i * 137.5;
             return (
               <span
                 key={i}
                 className="absolute rounded-full bg-white"
                 style={{
-                  width: '1.5px',
-                  height: '1.5px',
-                  left: `${(seed * 7.3) % 90 + 5}%`,
-                  top: `${(seed * 3.7) % 50 + 5}%`,
-                  opacity: 0.4 + (i % 3) * 0.15,
-                  animation: `pulse ${2 + (i % 3)}s ease-in-out infinite`,
-                  animationDelay: `${(i * 0.4) % 3}s`,
+                  width: `${1 + (i % 3) * 0.5}px`,
+                  height: `${1 + (i % 3) * 0.5}px`,
+                  left: `${(seed * 7.3) % 92 + 4}%`,
+                  top: `${(seed * 3.7) % 60 + 5}%`,
+                  opacity: 0.3 + (i % 4) * 0.15,
+                  animation: `twinkle ${2.5 + (i % 3) * 1.5}s ease-in-out infinite`,
+                  animationDelay: `${(i * 0.3) % 4}s`,
                 }}
               />
             );
@@ -195,13 +214,13 @@ export default function SunArc({ lang }: SunArcProps) {
           className="absolute transition-all duration-[2000ms]"
           style={{
             left: `${isNight ? 70 : 85}%`,
-            top: '15%',
-            opacity: isNight ? 0.7 : Math.min(0.5, (h - sunSet)),
+            top: '12%',
+            opacity: isNight ? 0.75 : Math.min(0.5, (h - sunSet) * 0.3),
           }}
         >
-          <svg width="16" height="16" viewBox="0 0 16 16">
-            <circle cx="8" cy="8" r="5.5" fill="#e8dcc0" opacity="0.8" />
-            <circle cx="11" cy="6" r="4.5" fill="var(--color-bg)" />
+          <svg width="20" height="20" viewBox="0 0 20 20">
+            <circle cx="10" cy="10" r="7" fill="#e8dcc0" opacity="0.85" />
+            <circle cx="14" cy="7" r="5.5" fill="var(--color-bg)" />
           </svg>
         </div>
       )}
@@ -211,10 +230,10 @@ export default function SunArc({ lang }: SunArcProps) {
         <div
           className="absolute rounded-full transition-all duration-[2000ms]"
           style={{
-            width: '50px',
-            height: '50px',
-            left: `calc(${sunX}% - 25px)`,
-            top: `calc(${sunY}% - 25px)`,
+            width: `${glowSize}px`,
+            height: `${glowSize}px`,
+            left: `calc(${sunX}% - ${glowSize / 2}px)`,
+            top: `calc(${sunY}% - ${glowSize / 2}px)`,
             background: `radial-gradient(circle, ${glowColor} 0%, transparent 70%)`,
           }}
         />
@@ -225,33 +244,36 @@ export default function SunArc({ lang }: SunArcProps) {
         <div
           className="absolute rounded-full transition-all duration-[2000ms]"
           style={{
-            width: '14px',
-            height: '14px',
-            left: `calc(${sunX}% - 7px)`,
-            top: `calc(${sunY}% - 7px)`,
+            width: '16px',
+            height: '16px',
+            left: `calc(${sunX}% - 8px)`,
+            top: `calc(${sunY}% - 8px)`,
             background: `radial-gradient(circle at 35% 35%, ${sunCore}, ${altitude > 0.3 ? '#ffe090' : '#d06020'})`,
-            boxShadow: `0 0 ${altitude > 0.5 ? 10 : 16}px ${altitude > 0.5 ? 'rgba(255,220,100,0.5)' : 'rgba(255,140,40,0.4)'}`,
+            boxShadow: `0 0 ${8 + 12 * altitude}px ${altitude > 0.5 ? `rgba(255,220,100,${0.3 + 0.3 * altitude})` : `rgba(255,140,40,${0.2 + 0.2 * altitude})`}`,
           }}
         />
       )}
 
       {/* Greeting - top left, subtle */}
-      <div className="absolute top-2 left-3">
+      <div className="absolute top-3 left-4">
         <p className="text-xs" style={{ color: 'var(--color-text-muted)', opacity: 0.5 }}>
           {greeting}
         </p>
       </div>
 
-      {/* Bottom content area */}
+      {/* Bottom: lunar date */}
       <div className="absolute bottom-0 left-0 right-0">
         <LunarDate lang={lang} />
       </div>
 
-      {/* Blink cursor animation */}
       <style>{`
         @keyframes blink {
           0%, 100% { opacity: 1; }
           50% { opacity: 0; }
+        }
+        @keyframes twinkle {
+          0%, 100% { opacity: 0.3; }
+          50% { opacity: 0.9; }
         }
       `}</style>
     </div>
