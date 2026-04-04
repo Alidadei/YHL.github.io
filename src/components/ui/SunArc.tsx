@@ -276,6 +276,7 @@ export default function SunArc({ lang }: SunArcProps) {
           50% { opacity: 0.9; }
         }
       `}</style>
-    </div>
+      </div>
+    </>
   );
 }
