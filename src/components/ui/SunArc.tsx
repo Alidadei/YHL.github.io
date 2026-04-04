@@ -174,7 +174,7 @@ export default function SunArc({ lang }: SunArcProps) {
     : (h < 6 ? 'Good Night' : h < 12 ? 'Good Morning' : h < 18 ? 'Good Afternoon' : 'Good Evening');
 
   return (
-    <div className="relative w-full" style={{ height: '340px' }}>
+    <div className="relative w-full" style={{ height: '200px', marginLeft: 'calc(-50vw + 50%)', marginRight: 'calc(-50vw + 50%)' }}>
       {/* Sky layer */}
       <div
         className="absolute inset-0"
