@@ -31,11 +31,9 @@ function LunarDate({ lang }: { lang: 'zh' | 'en' }) {
   const yearGZ = lunar.getYearInGanZhi(); // "丙午"
   const monthCN = lunar.getMonthInChinese(); // "二"
   const dayCN = lunar.getDayInChinese(); // "十七"
-  const shengxiao = lunar.getYearShengXiao(); // "马"
-
   const fullText = lang === 'zh'
-    ? `${yearGZ}年 ${monthCN}月${dayCN} 生肖${shengxiao}`
-    : `${yearGZ} Year ${monthCN} Month ${dayCN}`;
+    ? `${yearGZ}年 ${monthCN}月${dayCN}日`
+    : `${yearGZ} Year ${monthCN} Month ${dayCN} Day`;
 
   useEffect(() => {
     let i = 0;
