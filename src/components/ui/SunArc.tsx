@@ -24,16 +24,30 @@ function getWuxingColor(char: string): string {
 }
 
 function LunarDate({ lang }: { lang: 'zh' | 'en' }) {
+  const [now, setNow] = useState(() => new Date());
   const [displayed, setDisplayed] = useState('');
   const [done, setDone] = useState(false);
 
-  const lunar = Solar.fromDate(new Date()).getLunar();
-  const yearGZ = lunar.getYearInGanZhi(); // "丙午"
-  const monthGZ = lunar.getMonthInGanZhi(); // "辛卯"
-  const dayGZ = lunar.getDayInGanZhi(); // "戊申"
+  // 每分钟检查日期是否变化，跨日自动更新干支
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setNow(prev => {
+        const next = new Date();
+        return prev.getDate() !== next.getDate() ? next : prev;
+      });
+    }, 60000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const lunar = Solar.fromDate(now).getLunar();
+  const yearGZ = lunar.getYearInGanZhi();
+  const monthGZ = lunar.getMonthInGanZhi();
+  const dayGZ = lunar.getDayInGanZhi();
   const fullText = `${yearGZ}年 ${monthGZ}月 ${dayGZ}日`;
 
   useEffect(() => {
+    setDisplayed('');
+    setDone(false);
     let i = 0;
     const timer = setInterval(() => {
       i++;
